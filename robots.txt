@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /posts/
+
+Sitemap: https://jamiereidchannelstrategy.com/sitemap.xml
