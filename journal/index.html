@@ -6,8 +6,6 @@
 <title>Jamie Reid — Partner Ecosystem Strategy | Thinking Forward Journal</title>
 <meta name="description" content="Practitioner-level thinking on channel strategy, partner ecosystem design, and where the channel is headed — by Jamie Reid.">
 <link rel="canonical" href="https://jamiereidchannelstrategy.com/journal/">
-
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jamie Reid — Partner Ecosystem Strategy | Thinking Forward Journal">
 <meta property="og:description" content="Practitioner-level thinking on channel strategy, partner ecosystem design, and where the channel is headed.">
@@ -16,14 +14,10 @@
 <meta property="og:image" content="https://jamiereidchannelstrategy.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-
-<!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Thinking Forward Journal — Jamie Reid">
 <meta name="twitter:description" content="Practitioner-level thinking on channel strategy, partner ecosystem design, and where the channel is headed.">
 <meta name="twitter:image" content="https://jamiereidchannelstrategy.com/og-image.jpg">
-
-<!-- Additional SEO -->
 <meta name="author" content="Jamie Reid">
 <meta name="robots" content="index, follow">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -53,7 +47,6 @@
   .cursor { position: fixed; width: 10px; height: 10px; background: var(--forest-mid); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); }
   .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--sage); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: all 0.15s ease; opacity: 0.6; }
 
-  /* Nav */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
@@ -65,7 +58,6 @@
   .nav-links a { color: var(--sage); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
   .nav-links a:hover, .nav-links a.active { color: var(--white); }
 
-  /* Header */
   .journal-header {
     padding: 160px 60px 80px;
     border-bottom: 1px solid var(--line);
@@ -92,7 +84,6 @@
     align-self: end;
   }
 
-  /* Filter bar */
   .filter-bar {
     padding: 32px 60px;
     display: flex;
@@ -119,9 +110,7 @@
     background: rgba(70,98,76,0.12);
   }
 
-  /* Posts grid */
   .posts-container { padding: 80px 60px 120px; }
-
   .posts-featured { margin-bottom: 80px; }
 
   .featured-post {
@@ -218,7 +207,6 @@
   .featured-post:hover .post-read-more,
   .post-card:hover .post-read-more { gap: 14px; color: var(--grey-green); }
 
-  /* Post cards grid */
   .posts-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -243,7 +231,6 @@
   .post-card .post-title { font-size: 22px; flex-grow: 1; }
   .post-card .post-excerpt { font-size: 13px; }
 
-  /* Empty state */
   .posts-empty {
     text-align: center;
     padding: 80px;
@@ -254,7 +241,6 @@
   }
   .posts-empty h3 { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--white); margin-bottom: 16px; }
 
-  /* Footer */
   footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); }
   .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--grey-green); }
   .footer-copy { font-size: 11px; color: var(--sage); letter-spacing: 1px; }
@@ -269,37 +255,17 @@
   @media (max-width: 768px) {
     #cursor, #cursorRing { display: none; }
     * { cursor: auto !important; }
-
     nav { padding: 20px 24px; }
     .nav-links { gap: 16px; }
     .nav-links a { font-size: 10px; letter-spacing: 1px; }
-
-    .journal-header {
-      padding: 100px 24px 48px;
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-
+    .journal-header { padding: 100px 24px 48px; grid-template-columns: 1fr; gap: 32px; }
     .filter-bar { padding: 24px 24px; gap: 8px; }
     .filter-btn { font-size: 9px; padding: 6px 14px; }
-
     .posts-container { padding: 40px 24px 80px; }
-    .posts-featured .featured-post {
-      grid-template-columns: 1fr;
-    }
+    .posts-featured .featured-post { grid-template-columns: 1fr; }
     .featured-post-visual { min-height: 200px; }
-
-    .posts-grid {
-      grid-template-columns: 1fr;
-      gap: 2px;
-    }
-
-    footer {
-      flex-direction: column;
-      gap: 16px;
-      padding: 32px 24px;
-      text-align: center;
-    }
+    .posts-grid { grid-template-columns: 1fr; gap: 2px; }
+    footer { flex-direction: column; gap: 16px; padding: 32px 24px; text-align: center; }
     .footer-links { gap: 20px; }
   }
 </style>
@@ -319,7 +285,6 @@
   </ul>
 </nav>
 
-<!-- Header -->
 <header class="journal-header">
   <div>
     <p class="journal-eyebrow">Jamie Reid</p>
@@ -328,7 +293,6 @@
   <p class="journal-desc">Practitioner-level thinking on where the channel is headed — ecosystem strategy, partner operations, program design, and what next-generation programs actually need to look like.</p>
 </header>
 
-<!-- Filter bar -->
 <div class="filter-bar">
   <button class="filter-btn active" data-filter="all">All</button>
   <button class="filter-btn" data-filter="Strategy">Strategy</button>
@@ -339,24 +303,23 @@
   <button class="filter-btn" data-filter="Leadership">Leadership</button>
 </div>
 
-<!-- Posts -->
 <div class="posts-container">
 
   <!-- Featured post -->
   <div class="posts-featured reveal">
-    <a href="/journal/deal-registration-evolution.html" class="featured-post">
+    <a href="/journal/ecosystems-in-the-age-of-ai.html" class="featured-post">
       <div class="featured-post-visual">
-        <span class="featured-post-visual-text">DR</span>
+        <span class="featured-post-visual-text">AI</span>
         <span class="featured-label">Latest</span>
       </div>
       <div class="featured-post-content">
         <div>
-          <p class="post-category">Strategy</p>
-          <h2 class="post-title">Deal Registration Is Evolving — And It's About Time</h2>
-          <p class="post-excerpt">For decades, deal registration meant two things: new logos and partner protection. But vendors are quietly rewiring one of the channel's most foundational mechanics — and the shift to full lifecycle value is bigger than most people realize.</p>
+          <p class="post-category">Ecosystem</p>
+          <h2 class="post-title">Ecosystems in the Age of AI: Rethinking Enablement, Engagement, and Scale</h2>
+          <p class="post-excerpt">AI isn't just changing the tools we use: it's reshaping what partners expect, how they sell, and what good looks like for vendor relationships. Key insights from ecosystem leaders on the front lines of this shift.</p>
         </div>
         <div class="post-meta">
-          <span>February 2026</span>
+          <span>March 2026</span>
           <span class="post-read-more">Read →</span>
         </div>
       </div>
@@ -365,6 +328,17 @@
 
   <!-- Posts grid -->
   <div class="posts-grid" id="postsGrid">
+
+    <a href="/journal/deal-registration-evolution.html" class="post-card reveal" data-category="Strategy">
+      <p class="post-category">Strategy</p>
+      <h3 class="post-title">Deal Registration Is Evolving — And It's About Time</h3>
+      <p class="post-excerpt">For decades, deal registration meant two things: new logos and partner protection. But vendors are quietly rewiring one of the channel's most foundational mechanics — and the shift to full lifecycle value is bigger than most people realize.</p>
+      <div class="post-meta" style="margin-top:32px;">
+        <span>February 2026</span>
+        <span class="post-read-more">Read →</span>
+      </div>
+    </a>
+
     <a href="/journal/partner-performance-scorecards.html" class="post-card reveal" data-category="Operations">
       <p class="post-category">Operations</p>
       <h3 class="post-title">Building Partner Performance Scorecards That Actually Mean Something</h3>
@@ -374,6 +348,7 @@
         <span class="post-read-more">Read →</span>
       </div>
     </a>
+
     <a href="/journal/partner-powered-peg.html" class="post-card reveal" data-category="Strategy">
       <p class="post-category">Strategy</p>
       <h3 class="post-title">Why PEG Should Change How You Think About Channel ROI — Part 1</h3>
@@ -383,6 +358,7 @@
         <span class="post-read-more">Read →</span>
       </div>
     </a>
+
     <a href="/journal/ecosystem-led-growth.html" class="post-card reveal" data-category="Ecosystem">
       <p class="post-category">Ecosystem</p>
       <h3 class="post-title">Ecosystem-Led Growth Is the Next Channel Evolution — Here's What That Actually Means</h3>
@@ -392,6 +368,7 @@
         <span class="post-read-more">Read →</span>
       </div>
     </a>
+
   </div>
 
 </div>
@@ -407,7 +384,6 @@
 </footer>
 
 <script>
-  // Cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
@@ -415,7 +391,6 @@
   function animRing() { rx += (mx-rx)*0.12; ry += (my-ry)*0.12; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(animRing); }
   animRing();
 
-  // Filter
   const filterBtns = document.querySelectorAll('.filter-btn');
   const postCards = document.querySelectorAll('.post-card');
   filterBtns.forEach(btn => {
@@ -433,7 +408,6 @@
     });
   });
 
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach((entry, i) => {
