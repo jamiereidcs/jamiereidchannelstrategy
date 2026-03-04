@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partner Program Guide Framework — Jamie Reid</title>
+<meta name="description" content="A comprehensive framework for designing modern partner programs: ecosystem strategy, tier structures, incentive models, lifecycle engagement, and performance management.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Partner Program Guide Framework — Jamie Reid">
+<meta property="og:description" content="A comprehensive framework for designing modern partner programs: from ecosystem strategy through lifecycle engagement and performance management.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jamiereidchannelstrategy.com/program%20guide">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Partner Program Guide Framework — Jamie Reid">
+<meta name="twitter:description" content="A comprehensive framework for designing modern partner programs: from ecosystem strategy through lifecycle engagement and performance management.">
+
+<link rel="canonical" href="https://jamiereidchannelstrategy.com/program%20guide">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LL3TBPZYFN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LL3TBPZYFN');
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #141414;
+    --warm-dark: #1a1a1a;
+    --forest-deep: #1b3a2e;
+    --forest-mid: #46624c;
+    --sage: #687764;
+    --grey-green: #a1aca6;
+    --white: #bebfb9;
+    --accent: #46624c;
+    --accent-light: #687764;
+    --line: rgba(70,98,76,0.35);
+    --hover-tint: rgba(40,64,30,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed; width: 10px; height: 10px;
+    background: var(--accent); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%); transition: transform 0.1s ease;
+  }
+  .cursor-ring {
+    position: fixed; width: 36px; height: 36px;
+    border: 1px solid var(--grey-green); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%); transition: all 0.15s ease; opacity: 0.6;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px 60px; mix-blend-mode: normal;
+  }
+  nav::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(20,20,18,0.95), transparent);
+    pointer-events: none;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px;
+    letter-spacing: 4px; color: var(--white);
+    position: relative; z-index: 1; text-decoration: none;
+  }
+  .nav-links {
+    display: flex; gap: 40px; list-style: none;
+    position: relative; z-index: 1;
+  }
+  .nav-links a {
+    color: var(--sage); text-decoration: none; font-size: 11px;
+    letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  /* Page header */
+  .page-header {
+    padding: 160px 60px 80px;
+    border-bottom: 1px solid var(--line);
+  }
+  .page-header-inner {
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .page-eyebrow {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 16px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+  .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 0.95; letter-spacing: 1px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.5s;
+  }
+  .page-subtitle {
+    font-size: 13px; color: var(--sage); max-width: 340px;
+    text-align: right; line-height: 1.7;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.7s;
+  }
+
+  /* Section patterns */
+  .section-label {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 16px;
+  }
+
+  /* Intro section */
+  .intro {
+    padding: 100px 60px;
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 100px;
+    align-items: start; position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+  .intro-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.2; color: var(--white); margin-bottom: 20px;
+  }
+  .intro-title em { font-style: italic; color: var(--grey-green); }
+  .intro-body {
+    font-size: 15px; line-height: 1.9; color: var(--grey-green); margin-bottom: 24px;
+  }
+  .intro-cta {
+    display: flex; gap: 20px; align-items: center; margin-top: 40px;
+  }
+  .btn-primary {
+    background: var(--forest-deep); color: var(--white);
+    padding: 14px 32px; font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none; font-weight: 500;
+    transition: all 0.3s; font-family: 'DM Sans', sans-serif;
+    border: none; cursor: none; display: inline-flex; align-items: center; gap: 10px;
+  }
+  .btn-primary:hover { background: var(--forest-mid); transform: translateY(-2px); }
+  .btn-ghost {
+    color: var(--grey-green); font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+  }
+  .btn-ghost::after { content: '↓'; transition: transform 0.3s; }
+  .btn-ghost:hover { color: var(--white); }
+  .btn-ghost:hover::after { transform: translateY(4px); }
+
+  /* Template sections */
+  .template-sections {
+    padding: 100px 60px;
+    background: var(--warm-dark);
+    border-bottom: 1px solid var(--line);
+  }
+  .template-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 80px;
+  }
+  .template-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: 1px; line-height: 1;
+  }
+  .template-subtitle {
+    font-size: 13px; color: var(--sage); max-width: 300px;
+    text-align: right; line-height: 1.7;
+  }
+
+  .template-list {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .template-item {
+    display: grid; grid-template-columns: 80px 1fr 1.2fr;
+    gap: 40px; align-items: center;
+    padding: 40px 48px; background: var(--black);
+    border-left: 3px solid transparent; transition: all 0.3s ease;
+  }
+  .template-item:hover {
+    background: var(--warm-dark); border-left-color: var(--forest-mid);
+  }
+  .template-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 40px;
+    color: rgba(196,184,154,0.15); line-height: 1; transition: color 0.3s;
+  }
+  .template-item:hover .template-num { color: var(--grey-green); }
+  .template-type {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 10px;
+  }
+  .template-item-title {
+    font-family: 'DM Serif Display', serif; font-size: 26px;
+    color: var(--white); line-height: 1.2;
+  }
+  .template-desc {
+    font-size: 13px; line-height: 1.8; color: var(--sage);
+  }
+
+  /* Architecture layers */
+  .architecture {
+    padding: 100px 60px;
+    border-bottom: 1px solid var(--line);
+  }
+  .architecture-header { margin-bottom: 60px; }
+  .architecture-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.2; color: var(--white); margin-bottom: 16px;
+  }
+  .architecture-title em { font-style: italic; color: var(--grey-green); }
+  .architecture-sub {
+    font-size: 14px; line-height: 1.8; color: var(--sage); max-width: 600px;
+  }
+
+  .layer-stack {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .layer-card {
+    background: var(--warm-dark); padding: 48px;
+    position: relative; overflow: hidden; transition: background 0.4s;
+    display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start;
+  }
+  .layer-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 0; background: var(--forest-mid);
+    transition: height 0.4s ease;
+  }
+  .layer-card:hover { background: var(--black); }
+  .layer-card:hover::before { height: 100%; }
+  .layer-label {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 8px;
+  }
+  .layer-name {
+    font-family: 'DM Serif Display', serif; font-size: 22px;
+    color: var(--white); line-height: 1.3;
+  }
+  .layer-desc {
+    font-size: 13px; line-height: 1.8; color: var(--sage);
+  }
+
+  /* Lifecycle */
+  .lifecycle {
+    padding: 100px 60px;
+    background: var(--warm-dark);
+    border-bottom: 1px solid var(--line);
+  }
+  .lifecycle-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 80px;
+  }
+  .lifecycle-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: 1px; line-height: 1;
+  }
+  .lifecycle-subtitle {
+    font-size: 13px; color: var(--sage); max-width: 340px;
+    text-align: right; line-height: 1.7;
+  }
+
+  .lifecycle-flow {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;
+  }
+  .lifecycle-stage {
+    background: var(--black); padding: 40px 32px;
+    position: relative; transition: all 0.3s;
+  }
+  .lifecycle-stage:hover { transform: translateY(-4px); }
+  .lifecycle-stage-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 48px;
+    color: rgba(196,184,154,0.1); line-height: 1; margin-bottom: 16px;
+  }
+  .lifecycle-stage-name {
+    font-family: 'DM Serif Display', serif; font-size: 20px;
+    color: var(--white); margin-bottom: 12px;
+  }
+  .lifecycle-stage-desc {
+    font-size: 12px; line-height: 1.7; color: var(--sage);
+  }
+  .lifecycle-arrow {
+    position: absolute; top: 50%; right: -8px;
+    color: var(--forest-mid); font-size: 14px; z-index: 2;
+    transform: translateY(-50%);
+  }
+
+  /* Audience section */
+  .audience {
+    padding: 100px 60px;
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 100px;
+    align-items: start;
+    border-bottom: 1px solid var(--line);
+  }
+  .audience-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.2; color: var(--white);
+  }
+  .audience-title em { font-style: italic; color: var(--grey-green); }
+  .audience-body {
+    font-size: 15px; line-height: 1.9; color: var(--grey-green); margin-bottom: 32px;
+  }
+  .audience-tags {
+    display: flex; flex-wrap: wrap; gap: 10px;
+  }
+  .tag {
+    border: 1px solid var(--forest-mid); padding: 8px 16px;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--forest-mid); transition: all 0.3s;
+  }
+  .tag:hover {
+    border-color: var(--grey-green); background: rgba(70,98,76,0.15);
+    color: var(--grey-green);
+  }
+
+  /* Download CTA */
+  .download-cta {
+    padding: 120px 60px;
+    text-align: center;
+    position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .download-cta-bg {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(120px, 20vw, 280px);
+    color: rgba(196,184,154,0.03); pointer-events: none;
+    letter-spacing: -10px; white-space: nowrap;
+  }
+  .download-cta-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.3; color: var(--white);
+    max-width: 700px; margin: 0 auto 24px; position: relative;
+  }
+  .download-cta-title em { color: var(--grey-green); font-style: italic; }
+  .download-cta-line {
+    width: 60px; height: 1px; background: var(--forest-mid); margin: 40px auto;
+  }
+
+  /* Coffee / Venmo */
+  .coffee {
+    padding: 100px 60px;
+    background: var(--warm-dark);
+    border-top: 1px solid var(--line);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 100px;
+    align-items: center;
+  }
+  .coffee-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.2; color: var(--white); margin-bottom: 24px;
+  }
+  .coffee-title em { font-style: italic; color: var(--grey-green); }
+  .coffee-body {
+    font-size: 15px; line-height: 1.9; color: var(--grey-green);
+  }
+  .qr-wrapper {
+    display: flex; justify-content: center;
+  }
+  .qr-container {
+    background: #fff; padding: 20px; border-radius: 4px;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+  }
+  .qr-container img {
+    width: 220px; height: auto; display: block;
+  }
+
+  /* Footer */
+  footer {
+    padding: 40px 60px; display: flex;
+    justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--line);
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 18px;
+    letter-spacing: 3px; color: var(--grey-green);
+  }
+  .footer-copy {
+    font-size: 11px; color: var(--sage); letter-spacing: 1px;
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--sage); text-decoration: none; transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--white); }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 9px; }
+    .page-header { padding: 120px 24px 60px; }
+    .page-header-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .page-subtitle { text-align: left; }
+    .intro { padding: 60px 24px; grid-template-columns: 1fr; gap: 40px; }
+    .template-sections { padding: 60px 24px; }
+    .template-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .template-subtitle { text-align: left; }
+    .template-item { grid-template-columns: 50px 1fr; gap: 20px; padding: 28px 24px; }
+    .template-desc { grid-column: 1 / -1; }
+    .architecture { padding: 60px 24px; }
+    .layer-card { grid-template-columns: 1fr; gap: 16px; padding: 32px 24px; }
+    .lifecycle { padding: 60px 24px; }
+    .lifecycle-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .lifecycle-subtitle { text-align: left; }
+    .lifecycle-flow { grid-template-columns: 1fr; }
+    .lifecycle-arrow { display: none; }
+    .audience { padding: 60px 24px; grid-template-columns: 1fr; gap: 40px; }
+    .download-cta { padding: 80px 24px; }
+    .coffee { padding: 60px 24px; grid-template-columns: 1fr; gap: 48px; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Nav -->
+<nav>
+  <a href="/" class="nav-logo">Jamie Reid</a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/journal">Journal</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Page Header -->
+<header class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <p class="page-eyebrow">Free Framework · Partner Programs</p>
+      <h1 class="page-title">Partner Program<br>Guide Framework</h1>
+    </div>
+    <p class="page-subtitle">A comprehensive framework for designing modern partner programs: from ecosystem strategy through lifecycle engagement and performance management.</p>
+  </div>
+</header>
+
+<!-- Intro -->
+<section class="intro reveal">
+  <div>
+    <p class="section-label">Overview</p>
+    <h2 class="intro-title">The operating system for<br><em>modern partner programs.</em></h2>
+  </div>
+  <div>
+    <p class="intro-body">This framework goes beyond the typical partner program guide. It includes a 13-section operational template covering everything from executive strategy to governance, a five-layer program architecture model, and a full partner lifecycle framework that maps incentives to customer value.</p>
+    <p class="intro-body">Whether you are building a partner program from the ground up or evolving a legacy model toward lifecycle engagement, this framework gives you the structural foundation to do it right.</p>
+    <div class="intro-cta">
+      <a href="Partner_Program_Guide_Framework.docx" download class="btn-primary" onclick="gtag('event', 'file_download', {'file_name': 'Partner_Program_Guide_Framework', 'link_text': 'Download Framework'});">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Framework
+      </a>
+      <a href="#template" class="btn-ghost">See what's inside</a>
+    </div>
+  </div>
+</section>
+
+<!-- Template Sections -->
+<section class="template-sections" id="template">
+  <div class="template-header reveal">
+    <div>
+      <p class="section-label">The Template</p>
+      <h2 class="template-title">13 Sections</h2>
+    </div>
+    <p class="template-subtitle">Every operational component of a partner program, structured as questions to answer and elements to define.</p>
+  </div>
+  <div class="template-list">
+    <div class="template-item reveal">
+      <div class="template-num">01</div>
+      <div>
+        <p class="template-type">Foundation</p>
+        <h3 class="template-item-title">Executive Summary</h3>
+      </div>
+      <p class="template-desc">Define the purpose and strategic goals of the partner program: GTM role, target markets, and expected ecosystem outcomes.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">02</div>
+      <div>
+        <p class="template-type">Ecosystem</p>
+        <h3 class="template-item-title">Partner Types & Ecosystem Design</h3>
+      </div>
+      <p class="template-desc">Define which partner models your program supports: resellers, GSIs, MSPs, ISVs, marketplaces, and referral partners.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">03</div>
+      <div>
+        <p class="template-type">Onboarding</p>
+        <h3 class="template-item-title">Partner Recruitment & Onboarding</h3>
+      </div>
+      <p class="template-desc">Define how partners enter the ecosystem and reach productivity: ideal partner profiles, application process, and 30/60/90 day milestones.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">04</div>
+      <div>
+        <p class="template-type">Structure</p>
+        <h3 class="template-item-title">Program Structure & Tiers</h3>
+      </div>
+      <p class="template-desc">Define how partners progress through the program: tier requirements, revenue vs readiness models, and differentiated benefits.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">05</div>
+      <div>
+        <p class="template-type">Economics</p>
+        <h3 class="template-item-title">Incentive & Pricing Model</h3>
+      </div>
+      <p class="template-desc">Define how partners make money: reseller margin, deal registration discounts, services revenue, renewal incentives, and discount strategy.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">06</div>
+      <div>
+        <p class="template-type">Lifecycle</p>
+        <h3 class="template-item-title">Deal Registration & Lifecycle Engagement</h3>
+      </div>
+      <p class="template-desc">Expand deal registration beyond new logos: opportunity, renewal, advisory, lifecycle services, and influence registration models.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">07</div>
+      <div>
+        <p class="template-type">Demand</p>
+        <h3 class="template-item-title">Marketing & Demand Generation</h3>
+      </div>
+      <p class="template-desc">Define partner marketing support: MDF/BDF funding, campaign kits, co-branded assets, and embedded marketing resources.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">08</div>
+      <div>
+        <p class="template-type">Collaboration</p>
+        <h3 class="template-item-title">Sales Collaboration & ROEs</h3>
+      </div>
+      <p class="template-desc">Define co-sell engagement, territory alignment, opportunity ownership, and rules of engagement that prevent channel conflict.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">09</div>
+      <div>
+        <p class="template-type">Enablement</p>
+        <h3 class="template-item-title">Training, Certification & Resources</h3>
+      </div>
+      <p class="template-desc">Define enablement paths, certifications, specializations, and the tools partners need: portals, playbooks, demos, and battlecards.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">10</div>
+      <div>
+        <p class="template-type">Performance</p>
+        <h3 class="template-item-title">Performance Management & Governance</h3>
+      </div>
+      <p class="template-desc">Define scorecards, tier progression, evaluation cadence, operational policies, and how the program evolves over time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Architecture Layers -->
+<section class="architecture" id="architecture">
+  <div class="architecture-header reveal">
+    <p class="section-label">The Architecture</p>
+    <h2 class="architecture-title">Five operating layers behind<br><em>every mature partner program.</em></h2>
+    <p class="architecture-sub">The framework also includes a structural model showing how the template sections connect into a cohesive program architecture. When these layers are clear, the program guide becomes easier to design and maintain.</p>
+  </div>
+  <div class="layer-stack">
+    <div class="layer-card reveal">
+      <div>
+        <p class="layer-label">Layer 1</p>
+        <h3 class="layer-name">Ecosystem Strategy</h3>
+      </div>
+      <p class="layer-desc">Why partners exist in the business model. Defines which customer segments partners serve, which partner types matter most, and how partner-led revenue fits the broader strategy. This layer drives everything else.</p>
+    </div>
+    <div class="layer-card reveal">
+      <div>
+        <p class="layer-label">Layer 2</p>
+        <h3 class="layer-name">Program Design</h3>
+      </div>
+      <p class="layer-desc">How the program operates. Partner tiers, requirements, specializations, onboarding rules, and governance. This is where most traditional guides begin, but it should come after strategy.</p>
+    </div>
+    <div class="layer-card reveal">
+      <div>
+        <p class="layer-label">Layer 3</p>
+        <h3 class="layer-name">Economic Model</h3>
+      </div>
+      <p class="layer-desc">How partners make money. Reseller margin, deal registration, services revenue, managed services, renewal incentives, and multi-partner compensation. Aligned to customer lifetime value, not just the initial transaction.</p>
+    </div>
+    <div class="layer-card reveal">
+      <div>
+        <p class="layer-label">Layer 4</p>
+        <h3 class="layer-name">Enablement & Growth</h3>
+      </div>
+      <p class="layer-desc">How partners become effective. Training, playbooks, marketing support, demo environments, co-selling frameworks, and lifecycle engagement models. This layer determines whether partners actually activate and grow.</p>
+    </div>
+    <div class="layer-card reveal">
+      <div>
+        <p class="layer-label">Layer 5</p>
+        <h3 class="layer-name">Performance & Lifecycle</h3>
+      </div>
+      <p class="layer-desc">How partner impact is measured. Scorecards, tier progression, advisory councils, and program evolution. Where programs move from transaction metrics to lifecycle metrics.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Lifecycle Model -->
+<section class="lifecycle">
+  <div class="lifecycle-header reveal">
+    <div>
+      <p class="section-label">The Lifecycle Model</p>
+      <h2 class="lifecycle-title">Acquire to Expand</h2>
+    </div>
+    <p class="lifecycle-subtitle">Modern partner programs align incentives to customer value across five lifecycle stages, not just the initial transaction.</p>
+  </div>
+  <div class="lifecycle-flow reveal">
+    <div class="lifecycle-stage">
+      <div class="lifecycle-stage-num">01</div>
+      <h3 class="lifecycle-stage-name">Acquire</h3>
+      <p class="lifecycle-stage-desc">Customer discovery and opportunity creation. Deal registration, referral commissions, co-sell incentives.</p>
+      <span class="lifecycle-arrow">→</span>
+    </div>
+    <div class="lifecycle-stage">
+      <div class="lifecycle-stage-num">02</div>
+      <h3 class="lifecycle-stage-name">Implement</h3>
+      <p class="lifecycle-stage-desc">Deployment and solution delivery. Services revenue, implementation certifications, specialization tiers.</p>
+      <span class="lifecycle-arrow">→</span>
+    </div>
+    <div class="lifecycle-stage">
+      <div class="lifecycle-stage-num">03</div>
+      <h3 class="lifecycle-stage-name">Adopt</h3>
+      <p class="lifecycle-stage-desc">Customer success and product utilization. Managed services revenue, adoption incentives, lifecycle recognition.</p>
+      <span class="lifecycle-arrow">→</span>
+    </div>
+    <div class="lifecycle-stage">
+      <div class="lifecycle-stage-num">04</div>
+      <h3 class="lifecycle-stage-name">Renew</h3>
+      <p class="lifecycle-stage-desc">Contract continuation. Renewal margin protection, renewal bonuses, incumbency protection.</p>
+      <span class="lifecycle-arrow">→</span>
+    </div>
+    <div class="lifecycle-stage">
+      <div class="lifecycle-stage-num">05</div>
+      <h3 class="lifecycle-stage-name">Expand</h3>
+      <p class="lifecycle-stage-desc">Growth within existing accounts. Expansion incentives, upsell bonuses, lifecycle revenue multipliers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Audience -->
+<section class="audience">
+  <div class="reveal">
+    <p class="section-label">Who This Is For</p>
+    <h2 class="audience-title">Leaders designing<br><em>what comes next.</em></h2>
+  </div>
+  <div class="reveal">
+    <p class="audience-body">Whether you are standing up a new partner program or transforming a legacy model from margin-based to lifecycle-driven, this framework provides the strategic scaffolding to move with confidence.</p>
+    <div class="audience-tags">
+      <span class="tag">VP of Partnerships</span>
+      <span class="tag">Channel Chiefs</span>
+      <span class="tag">Partner Program Managers</span>
+      <span class="tag">Channel Operations</span>
+      <span class="tag">Revenue Operations</span>
+      <span class="tag">Partner Enablement</span>
+      <span class="tag">Alliance Leaders</span>
+    </div>
+  </div>
+</section>
+
+<!-- Download CTA -->
+<section class="download-cta">
+  <div class="download-cta-bg">PROGRAM</div>
+  <p class="reveal" style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:32px;">Get the Framework</p>
+  <h2 class="download-cta-title reveal">Ready to design<br><em>your program?</em></h2>
+  <div class="download-cta-line reveal"></div>
+  <div class="reveal">
+    <a href="Partner_Program_Guide_Framework.docx" download class="btn-primary" onclick="gtag('event', 'file_download', {'file_name': 'Partner_Program_Guide_Framework', 'link_text': 'Download Framework'});">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download Framework
+    </a>
+  </div>
+</section>
+
+<!-- Coffee / Venmo -->
+<section class="coffee">
+  <div class="reveal">
+    <p class="section-label">One More Thing</p>
+    <h2 class="coffee-title">Good information<br><em>should be free.</em></h2>
+    <p class="coffee-body">You shouldn't have to pay for useful information. But if you found this framework valuable and want to buy me a coffee for the trouble, I'd happily take the donation.</p>
+  </div>
+  <div class="qr-wrapper reveal">
+    <div class="qr-container">
+      <img src="venmo-qr.png" alt="Venmo QR Code — scan to send a tip">
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">Jamie Reid</div>
+  <p class="footer-copy">© 2026 Jamie Reid. Partner Ecosystem Strategy.</p>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/jamie-reid-862864b/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="/" rel="noopener">Home</a>
+    <a href="/#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+
+</body>
+</html>
