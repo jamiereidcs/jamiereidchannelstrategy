@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reseller Marketing Playbook Framework — Jamie Reid</title>
+<meta name="description" content="A strategic framework for building partner marketing playbooks that drive pipeline, enable resellers, and measure ROI. Free to download.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Reseller Marketing Playbook Framework — Jamie Reid">
+<meta property="og:description" content="A strategic framework for building partner marketing playbooks that align GTM priorities, enable resellers, and measure pipeline impact.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jamiereidchannelstrategy.com/resources/reseller-marketing-playbook">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reseller Marketing Playbook Framework — Jamie Reid">
+<meta name="twitter:description" content="A strategic framework for building partner marketing playbooks that align GTM priorities, enable resellers, and measure pipeline impact.">
+
+<link rel="canonical" href="https://jamiereidchannelstrategy.com/resources/reseller-marketing-playbook">
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #141414;
+    --warm-dark: #1a1a1a;
+    --forest-deep: #1b3a2e;
+    --forest-mid: #46624c;
+    --sage: #687764;
+    --grey-green: #a1aca6;
+    --white: #bebfb9;
+    --accent: #46624c;
+    --accent-light: #687764;
+    --line: rgba(70,98,76,0.35);
+    --hover-tint: rgba(40,64,30,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed; width: 10px; height: 10px;
+    background: var(--accent); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%); transition: transform 0.1s ease;
+  }
+  .cursor-ring {
+    position: fixed; width: 36px; height: 36px;
+    border: 1px solid var(--grey-green); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%); transition: all 0.15s ease; opacity: 0.6;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px 60px; mix-blend-mode: normal;
+  }
+  nav::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(20,20,18,0.95), transparent);
+    pointer-events: none;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px;
+    letter-spacing: 4px; color: var(--white);
+    position: relative; z-index: 1; text-decoration: none;
+  }
+  .nav-links {
+    display: flex; gap: 40px; list-style: none;
+    position: relative; z-index: 1;
+  }
+  .nav-links a {
+    color: var(--sage); text-decoration: none; font-size: 11px;
+    letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  /* Page header */
+  .page-header {
+    padding: 160px 60px 80px;
+    border-bottom: 1px solid var(--line);
+  }
+  .page-header-inner {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    max-width: 100%;
+  }
+  .page-eyebrow {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 16px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+  .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 0.95; letter-spacing: 1px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.5s;
+  }
+  .page-subtitle {
+    font-size: 13px; color: var(--sage); max-width: 340px;
+    text-align: right; line-height: 1.7;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.7s;
+  }
+
+  /* Section patterns */
+  .section-label {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 16px;
+  }
+
+  /* Intro section */
+  .intro {
+    padding: 100px 60px;
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 100px;
+    align-items: start; position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+  .intro-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.2; color: var(--white); margin-bottom: 20px;
+  }
+  .intro-title em { font-style: italic; color: var(--grey-green); }
+  .intro-body {
+    font-size: 15px; line-height: 1.9; color: var(--grey-green); margin-bottom: 24px;
+  }
+  .intro-cta {
+    display: flex; gap: 20px; align-items: center; margin-top: 40px;
+  }
+  .btn-primary {
+    background: var(--forest-deep); color: var(--white);
+    padding: 14px 32px; font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none; font-weight: 500;
+    transition: all 0.3s; font-family: 'DM Sans', sans-serif;
+    border: none; cursor: none; display: inline-flex; align-items: center; gap: 10px;
+  }
+  .btn-primary:hover { background: var(--forest-mid); transform: translateY(-2px); }
+  .btn-ghost {
+    color: var(--grey-green); font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+  }
+  .btn-ghost::after { content: '↓'; transition: transform 0.3s; }
+  .btn-ghost:hover { color: var(--white); }
+  .btn-ghost:hover::after { transform: translateY(4px); }
+
+  /* Framework pillars */
+  .pillars {
+    padding: 100px 60px;
+    background: var(--warm-dark);
+    border-bottom: 1px solid var(--line);
+  }
+  .pillars-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 80px;
+  }
+  .pillars-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: 1px; line-height: 1;
+  }
+  .pillars-subtitle {
+    font-size: 13px; color: var(--sage); max-width: 300px;
+    text-align: right; line-height: 1.7;
+  }
+
+  .pillar-list {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .pillar-item {
+    display: grid; grid-template-columns: 80px 1fr 1.2fr;
+    gap: 40px; align-items: center;
+    padding: 40px 48px; background: var(--black);
+    border-left: 3px solid transparent; transition: all 0.3s ease;
+  }
+  .pillar-item:hover {
+    background: var(--warm-dark); border-left-color: var(--forest-mid);
+  }
+  .pillar-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 40px;
+    color: rgba(196,184,154,0.15); line-height: 1; transition: color 0.3s;
+  }
+  .pillar-item:hover .pillar-num { color: var(--grey-green); }
+  .pillar-type {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 10px;
+  }
+  .pillar-title {
+    font-family: 'DM Serif Display', serif; font-size: 26px;
+    color: var(--white); line-height: 1.2;
+  }
+  .pillar-desc {
+    font-size: 13px; line-height: 1.8; color: var(--sage);
+  }
+
+  /* Partner types */
+  .partner-types {
+    padding: 100px 60px;
+    border-bottom: 1px solid var(--line);
+  }
+  .partner-types-header { margin-bottom: 60px; }
+  .partner-types-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.2; color: var(--white); margin-bottom: 16px;
+  }
+  .partner-types-title em { font-style: italic; color: var(--grey-green); }
+  .partner-types-sub {
+    font-size: 14px; line-height: 1.8; color: var(--sage); max-width: 600px;
+  }
+
+  .type-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px;
+  }
+  .type-card {
+    background: var(--warm-dark); padding: 48px;
+    position: relative; overflow: hidden; transition: background 0.4s;
+  }
+  .type-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 0; background: var(--forest-mid);
+    transition: height 0.4s ease;
+  }
+  .type-card:hover { background: var(--black); }
+  .type-card:hover::before { height: 100%; }
+  .type-card-label {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 12px;
+  }
+  .type-card-name {
+    font-family: 'DM Serif Display', serif; font-size: 22px;
+    color: var(--white); margin-bottom: 16px; line-height: 1.3;
+  }
+  .type-card-desc {
+    font-size: 13px; line-height: 1.8; color: var(--sage);
+  }
+
+  /* Audience section */
+  .audience {
+    padding: 100px 60px;
+    background: var(--warm-dark);
+    border-bottom: 1px solid var(--line);
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 100px;
+    align-items: start;
+  }
+  .audience-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.2; color: var(--white);
+  }
+  .audience-title em { font-style: italic; color: var(--grey-green); }
+  .audience-body {
+    font-size: 15px; line-height: 1.9; color: var(--grey-green); margin-bottom: 32px;
+  }
+  .audience-tags {
+    display: flex; flex-wrap: wrap; gap: 10px;
+  }
+  .tag {
+    border: 1px solid var(--forest-mid); padding: 8px 16px;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--forest-mid); transition: all 0.3s;
+  }
+  .tag:hover {
+    border-color: var(--grey-green); background: rgba(70,98,76,0.15);
+    color: var(--grey-green);
+  }
+
+  /* Download CTA */
+  .download-cta {
+    padding: 120px 60px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .download-cta-bg {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(120px, 20vw, 280px);
+    color: rgba(196,184,154,0.03); pointer-events: none;
+    letter-spacing: -10px; white-space: nowrap;
+  }
+  .download-cta-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.3; color: var(--white);
+    max-width: 700px; margin: 0 auto 24px; position: relative;
+  }
+  .download-cta-title em { color: var(--grey-green); font-style: italic; }
+  .download-cta-line {
+    width: 60px; height: 1px; background: var(--forest-mid); margin: 40px auto;
+  }
+
+  /* Coffee / Venmo */
+  .coffee {
+    padding: 100px 60px;
+    background: var(--warm-dark);
+    border-top: 1px solid var(--line);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 100px;
+    align-items: center;
+  }
+  .coffee-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.2; color: var(--white); margin-bottom: 24px;
+  }
+  .coffee-title em { font-style: italic; color: var(--grey-green); }
+  .coffee-body {
+    font-size: 15px; line-height: 1.9; color: var(--grey-green);
+  }
+  .qr-wrapper {
+    display: flex; justify-content: center;
+  }
+  .qr-container {
+    background: #fff; padding: 20px; border-radius: 4px;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+  }
+  .qr-container img {
+    width: 220px; height: auto; display: block;
+  }
+
+  /* Footer */
+  footer {
+    padding: 40px 60px; display: flex;
+    justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--line);
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 18px;
+    letter-spacing: 3px; color: var(--grey-green);
+  }
+  .footer-copy {
+    font-size: 11px; color: var(--sage); letter-spacing: 1px;
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--sage); text-decoration: none; transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--white); }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 9px; }
+    .page-header { padding: 120px 24px 60px; }
+    .page-header-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .page-subtitle { text-align: left; }
+    .intro { padding: 60px 24px; grid-template-columns: 1fr; gap: 40px; }
+    .pillars { padding: 60px 24px; }
+    .pillars-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .pillars-subtitle { text-align: left; }
+    .pillar-item { grid-template-columns: 50px 1fr; gap: 20px; padding: 28px 24px; }
+    .pillar-desc { grid-column: 1 / -1; }
+    .partner-types { padding: 60px 24px; }
+    .type-grid { grid-template-columns: 1fr; }
+    .audience { padding: 60px 24px; grid-template-columns: 1fr; gap: 40px; }
+    .download-cta { padding: 80px 24px; }
+    .coffee { padding: 60px 24px; grid-template-columns: 1fr; gap: 48px; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Nav -->
+<nav>
+  <a href="/" class="nav-logo">Jamie Reid</a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/journal">Journal</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Page Header -->
+<header class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <p class="page-eyebrow">Free Framework · Partner Playbooks</p>
+      <h1 class="page-title">Reseller Marketing<br>Playbook Framework</h1>
+    </div>
+    <p class="page-subtitle">A strategic framework for building partner marketing playbooks that align GTM priorities, enable resellers, and measure pipeline impact.</p>
+  </div>
+</header>
+
+<!-- Intro -->
+<section class="intro reveal">
+  <div>
+    <p class="section-label">Overview</p>
+    <h2 class="intro-title">The blueprint for<br><em>partner marketing execution.</em></h2>
+  </div>
+  <div>
+    <p class="intro-body">This framework covers every layer of a partner marketing playbook: from aligning on corporate GTM priorities and ICP definition, through competitive readiness and campaign execution, to AI-enabled targeting and full-funnel ROI measurement.</p>
+    <p class="intro-body">It's built to help channel leaders stand up scalable, measurable partner marketing programs: whether you're starting from scratch or refining what you already have.</p>
+    <div class="intro-cta">
+      <a href="Reseller_Marketing_Playbook_Framework.docx" download class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Framework
+      </a>
+      <a href="#pillars" class="btn-ghost">See what's inside</a>
+    </div>
+  </div>
+</section>
+
+<!-- Six Pillars -->
+<section class="pillars" id="pillars">
+  <div class="pillars-header reveal">
+    <div>
+      <p class="section-label">What's Inside</p>
+      <h2 class="pillars-title">Six Pillars</h2>
+    </div>
+    <p class="pillars-subtitle">Every layer of partner marketing execution, from strategic alignment to ROI measurement.</p>
+  </div>
+  <div class="pillar-list">
+    <div class="pillar-item reveal">
+      <div class="pillar-num">01</div>
+      <div>
+        <p class="pillar-type">Foundation</p>
+        <h3 class="pillar-title">Strategic Alignment</h3>
+      </div>
+      <p class="pillar-desc">Define ICP, priority verticals, geographies, buyer personas, and the role partners play in your go-to-market motion.</p>
+    </div>
+    <div class="pillar-item reveal">
+      <div class="pillar-num">02</div>
+      <div>
+        <p class="pillar-type">Messaging</p>
+        <h3 class="pillar-title">Positioning & Messaging</h3>
+      </div>
+      <p class="pillar-desc">Build the messaging foundation partners need: elevator pitches, persona-based messaging, case studies, co-branding guidelines, and differentiation.</p>
+    </div>
+    <div class="pillar-item reveal">
+      <div class="pillar-num">03</div>
+      <div>
+        <p class="pillar-type">Enablement</p>
+        <h3 class="pillar-title">Competitive Readiness</h3>
+      </div>
+      <p class="pillar-desc">Equip partners with battlecards, objection handling, pricing guidance, and competitive differentiation messaging to win against alternatives.</p>
+    </div>
+    <div class="pillar-item reveal">
+      <div class="pillar-num">04</div>
+      <div>
+        <p class="pillar-type">Execution</p>
+        <h3 class="pillar-title">Campaign Execution Model</h3>
+      </div>
+      <p class="pillar-desc">Lay out the campaign model: co-branded assets, targeting strategy, conversion targets, and program incentives for high-performing partners.</p>
+    </div>
+    <div class="pillar-item reveal">
+      <div class="pillar-num">05</div>
+      <div>
+        <p class="pillar-type">Intelligence</p>
+        <h3 class="pillar-title">AI-Enabled Targeting</h3>
+      </div>
+      <p class="pillar-desc">Leverage AI for ICP account identification, partner-to-account matching, personalized outreach, and campaign performance modeling.</p>
+    </div>
+    <div class="pillar-item reveal">
+      <div class="pillar-num">06</div>
+      <div>
+        <p class="pillar-type">Measurement</p>
+        <h3 class="pillar-title">ROI & Funnel Metrics</h3>
+      </div>
+      <p class="pillar-desc">Measure the full funnel: pipeline generation, meeting velocity, conversion performance, revenue impact, and AI-driven targeting performance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Partner Types -->
+<section class="partner-types">
+  <div class="partner-types-header reveal">
+    <p class="section-label">Built for Every Motion</p>
+    <h2 class="partner-types-title">Differentiated by <em>partner type.</em></h2>
+    <p class="partner-types-sub">The framework accounts for the distinct marketing motions across your ecosystem, so you can tailor playbooks to how each partner type actually sells.</p>
+  </div>
+  <div class="type-grid">
+    <div class="type-card reveal">
+      <p class="type-card-label">Demand Generation</p>
+      <h3 class="type-card-name">Resellers / VARs</h3>
+      <p class="type-card-desc">Regional marketing, sales-led outreach, and demand generation campaigns tailored for transactional partner motions.</p>
+    </div>
+    <div class="type-card reveal">
+      <p class="type-card-label">Thought Leadership</p>
+      <h3 class="type-card-name">GSIs / Consulting Partners</h3>
+      <p class="type-card-desc">Transformation messaging, industry solutions positioning, and thought leadership content for strategic advisory partners.</p>
+    </div>
+    <div class="type-card reveal">
+      <p class="type-card-label">Lifecycle Marketing</p>
+      <h3 class="type-card-name">MSPs</h3>
+      <p class="type-card-desc">Recurring services positioning, bundled solutions, and lifecycle marketing for managed service providers.</p>
+    </div>
+    <div class="type-card reveal">
+      <p class="type-card-label">Digital Discovery</p>
+      <h3 class="type-card-name">Marketplaces</h3>
+      <p class="type-card-desc">Product-led growth, listing optimization, and digital discovery strategies for marketplace-driven motions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Audience -->
+<section class="audience">
+  <div class="reveal">
+    <p class="section-label">Who This Is For</p>
+    <h2 class="audience-title">Channel leaders building<br><em>scalable playbooks.</em></h2>
+  </div>
+  <div class="reveal">
+    <p class="audience-body">Whether you're standing up a partner marketing program from scratch or refining an existing one, this framework gives you the strategic scaffolding to move faster and measure what matters.</p>
+    <div class="audience-tags">
+      <span class="tag">Partner Marketing Managers</span>
+      <span class="tag">Channel Sales Leaders</span>
+      <span class="tag">Partner Ecosystem VPs</span>
+      <span class="tag">Alliance Managers</span>
+      <span class="tag">Revenue Operations</span>
+      <span class="tag">Partner Enablement</span>
+    </div>
+  </div>
+</section>
+
+<!-- Download CTA -->
+<section class="download-cta">
+  <div class="download-cta-bg">PLAYBOOK</div>
+  <p class="reveal" style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:32px;">Get the Framework</p>
+  <h2 class="download-cta-title reveal">Ready to build<br><em>your playbook?</em></h2>
+  <div class="download-cta-line reveal"></div>
+  <div class="reveal">
+    <a href="Reseller_Marketing_Playbook_Framework.docx" download class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download Framework
+    </a>
+  </div>
+</section>
+
+<!-- Coffee / Venmo -->
+<section class="coffee">
+  <div class="reveal">
+    <p class="section-label">One More Thing</p>
+    <h2 class="coffee-title">Good information<br><em>should be free.</em></h2>
+    <p class="coffee-body">You shouldn't have to pay for useful information. But if you found this framework valuable and want to buy me a coffee for the trouble, I'd happily take the donation.</p>
+  </div>
+  <div class="qr-wrapper reveal">
+    <div class="qr-container">
+      <img src="venmo-qr.png" alt="Venmo QR Code — scan to send a tip">
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">Jamie Reid</div>
+  <p class="footer-copy">© 2026 Jamie Reid. Partner Ecosystem Strategy.</p>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/jamie-reid-862864b/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="/" rel="noopener">Home</a>
+    <a href="/#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+
+</body>
+</html>
