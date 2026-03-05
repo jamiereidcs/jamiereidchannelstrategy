@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thinking Forward Journal — Jamie Reid</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #141414;
+    --warm-dark: #1a1a1a;
+    --forest-deep: #1b3a2e;
+    --forest-mid: #46624c;
+    --sage: #687764;
+    --grey-green: #a1aca6;
+    --white: #bebfb9;
+    --line: rgba(70,98,76,0.35);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    cursor: none;
+  }
+
+  .cursor { position: fixed; width: 10px; height: 10px; background: var(--forest-mid); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); }
+  .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--sage); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: all 0.15s ease; opacity: 0.6; }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px 60px;
+  }
+  nav::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(20,20,20,0.97), transparent); pointer-events: none; }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 4px; color: var(--white); position: relative; z-index: 1; text-decoration: none; }
+  .nav-links { display: flex; gap: 40px; list-style: none; position: relative; z-index: 1; }
+  .nav-links a { color: var(--sage); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--white); }
+
+  /* Header */
+  .journal-header {
+    padding: 160px 60px 80px;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+  }
+
+  .journal-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--forest-mid); margin-bottom: 20px; }
+
+  .journal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 9vw, 120px);
+    line-height: 0.9;
+    letter-spacing: 1px;
+  }
+
+  .journal-desc {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--grey-green);
+    max-width: 480px;
+    align-self: end;
+  }
+
+  /* Filter bar */
+  .filter-bar {
+    padding: 32px 60px;
+    display: flex;
+    gap: 12px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 8px 18px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid var(--line);
+    color: var(--sage);
+    background: none;
+    cursor: none;
+    transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--forest-mid);
+    color: var(--white);
+    background: rgba(70,98,76,0.12);
+  }
+
+  /* Posts grid */
+  .posts-container { padding: 80px 60px 120px; }
+
+  .posts-featured { margin-bottom: 80px; }
+
+  .featured-post {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: var(--warm-dark);
+    border: 1px solid var(--line);
+    transition: border-color 0.3s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .featured-post:hover { border-color: var(--forest-mid); }
+
+  .featured-post-visual {
+    background: var(--forest-deep);
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .featured-post-visual-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 120px;
+    color: rgba(190,191,185,0.06);
+    letter-spacing: -5px;
+    user-select: none;
+  }
+  .featured-label {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--forest-mid);
+    padding: 5px 12px;
+  }
+
+  .featured-post-content {
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .post-category {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    margin-bottom: 16px;
+  }
+
+  .post-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    line-height: 1.3;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  .featured-post-content .post-title { font-size: 34px; }
+
+  .post-excerpt {
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--grey-green);
+    margin-bottom: 32px;
+    flex-grow: 1;
+  }
+
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sage);
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+  }
+
+  .post-read-more {
+    color: var(--forest-mid);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.3s, color 0.3s;
+  }
+  .featured-post:hover .post-read-more,
+  .post-card:hover .post-read-more { gap: 14px; color: var(--grey-green); }
+
+  /* Post cards grid */
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .post-card {
+    background: var(--warm-dark);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid transparent;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .post-card:hover {
+    border-color: var(--line);
+    background: #1e1e1e;
+  }
+
+  .post-card .post-title { font-size: 22px; flex-grow: 1; }
+  .post-card .post-excerpt { font-size: 13px; }
+
+  /* Empty state */
+  .posts-empty {
+    text-align: center;
+    padding: 80px;
+    color: var(--sage);
+    font-size: 13px;
+    letter-spacing: 1px;
+    border: 1px solid var(--line);
+  }
+  .posts-empty h3 { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--white); margin-bottom: 16px; }
+
+  /* Footer */
+  footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--grey-green); }
+  .footer-copy { font-size: 11px; color: var(--sage); letter-spacing: 1px; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--sage); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--white); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="/index.html" class="nav-logo">Jamie Reid</a>
+  <ul class="nav-links">
+    <li><a href="/index.html#about">About</a></li>
+    <li><a href="#" id="workNavLink">Work</a></li>
+    <li><a href="/journal/index.html" class="active">Thinking Forward Journal</a></li>
+    <li><a href="/index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Header -->
+<header class="journal-header">
+  <div>
+    <p class="journal-eyebrow">Jamie Reid</p>
+    <h1 class="journal-title">Thinking<br>Forward<br>Journal</h1>
+  </div>
+  <p class="journal-desc">Practitioner-level thinking on where the channel is headed — ecosystem strategy, partner operations, program design, and what next-generation programs actually need to look like.</p>
+</header>
+
+<!-- Filter bar -->
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="Strategy">Strategy</button>
+  <button class="filter-btn" data-filter="Operations">Operations</button>
+  <button class="filter-btn" data-filter="Systems">Systems</button>
+  <button class="filter-btn" data-filter="Programs">Programs</button>
+  <button class="filter-btn" data-filter="Ecosystem">Ecosystem</button>
+  <button class="filter-btn" data-filter="Leadership">Leadership</button>
+</div>
+
+<!-- Posts -->
+<div class="posts-container">
+
+  <!-- Featured post -->
+  <div class="posts-featured reveal">
+    <a href="/journal/ecosystems-in-the-age-of-ai" class="featured-post">
+      <div class="featured-post-visual">
+        <span class="featured-post-visual-text">AI</span>
+        <span class="featured-label">Featured</span>
+      </div>
+      <div class="featured-post-content">
+        <div>
+          <p class="post-category">Ecosystem</p>
+          <h2 class="post-title">Ecosystems in the Age of AI: Rethinking Enablement, Engagement, and Scale</h2>
+          <p class="post-excerpt">AI isn't just changing the tools we use: it's reshaping what partners expect, how they sell, and what good looks like for vendor relationships. Key insights from ecosystem leaders on the front lines of this shift.</p>
+        </div>
+        <div class="post-meta">
+          <span>March 2026</span>
+          <span class="post-read-more">Read →</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- More posts grid — populated as you write -->
+  <div class="posts-grid" id="postsGrid">
+    <a href="/journal/deal-registration-evolution" class="post-card reveal" data-category="Strategy">
+      <p class="post-category">Strategy</p>
+      <h3 class="post-title">Deal Registration Is Evolving — And It’s About Time</h3>
+      <p class="post-excerpt">For decades, deal registration meant two things: new logos and partner protection. But vendors are quietly rewiring one of the channel’s most foundational mechanics: the shift to full lifecycle value is bigger than most people realize.</p>
+      <div class="post-meta" style="margin-top:32px;">
+        <span>February 2026</span>
+        <span class="post-read-more">Read &rarr;</span>
+      </div>
+    </a>
+    <a href="/journal/partner-performance-scorecards.html" class="post-card reveal" data-category="Operations">
+      <p class="post-category">Operations</p>
+      <h3 class="post-title">Building Partner Performance Scorecards That Actually Mean Something</h3>
+      <p class="post-excerpt">Most scorecards are built for external partner reviews. Here’s why you need an internal one first: and how to build it across four dimensions that drive real action.</p>
+      <div class="post-meta" style="margin-top:32px;">
+        <span>January 2026</span>
+        <span class="post-read-more">Read &rarr;</span>
+      </div>
+    </a>
+    <a href="/journal/partner-powered-peg.html" class="post-card reveal" data-category="Strategy">
+      <p class="post-category">Strategy</p>
+      <h3 class="post-title">Why PEG Should Change How You Think About Channel ROI — Part 1</h3>
+      <p class="post-excerpt">Revenue has always been the headline metric. But the next era of channel strategy demands something more rigorous: Profitable Efficient Growth. Part one of notes from Craig Booth’s Partner-Powered Revenue Revolution.</p>
+      <div class="post-meta" style="margin-top:32px;">
+        <span>December 2025</span>
+        <span class="post-read-more">Read &rarr;</span>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Jamie Reid</div>
+  <p class="footer-copy">© 2025 Jamie Reid. Partner Ecosystem Strategy.</p>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/jamie-reid-862864b/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="/index.html">Home</a>
+    <a href="/index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
+  function animRing() { rx += (mx-rx)*0.12; ry += (my-ry)*0.12; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(animRing); }
+  animRing();
+
+  // Filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const postCards = document.querySelectorAll('.post-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      postCards.forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
