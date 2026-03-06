@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM & PRM Architecture for Partner Ecosystems — Jamie Reid</title>
+<meta name="description" content="A framework for designing the technology stack behind modern partner programs — CRM architecture, PRM selection, integration design, AI readiness, and the five mistakes that break partner infrastructure.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="CRM & PRM Architecture for Partner Ecosystems — Jamie Reid">
+<meta property="og:description" content="A framework for designing the technology stack behind modern partner programs — from CRM data architecture through PRM selection, AI readiness, and ecosystem platform strategy.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jamiereidchannelstrategy.com/crm-prm-architecture">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CRM & PRM Architecture for Partner Ecosystems — Jamie Reid">
+<meta name="twitter:description" content="A framework for designing the technology stack behind modern partner programs — from CRM data architecture through PRM selection, AI readiness, and ecosystem platform strategy.">
+
+<link rel="canonical" href="https://jamiereidchannelstrategy.com/crm-prm-architecture">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LL3TBPZYFN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LL3TBPZYFN');
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #141414;
+    --warm-dark: #1a1a1a;
+    --forest-deep: #1b3a2e;
+    --forest-mid: #46624c;
+    --sage: #687764;
+    --grey-green: #a1aca6;
+    --white: #bebfb9;
+    --accent: #46624c;
+    --accent-light: #687764;
+    --line: rgba(70,98,76,0.35);
+    --hover-tint: rgba(40,64,30,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed; width: 10px; height: 10px;
+    background: var(--accent); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%); transition: transform 0.1s ease;
+  }
+  .cursor-ring {
+    position: fixed; width: 36px; height: 36px;
+    border: 1px solid var(--grey-green); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%); transition: all 0.15s ease; opacity: 0.6;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px 60px; mix-blend-mode: normal;
+  }
+  nav::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(20,20,18,0.95), transparent);
+    pointer-events: none;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px;
+    letter-spacing: 4px; color: var(--white);
+    position: relative; z-index: 1; text-decoration: none;
+  }
+  .nav-links {
+    display: flex; gap: 40px; list-style: none;
+    position: relative; z-index: 1;
+  }
+  .nav-links a {
+    color: var(--sage); text-decoration: none; font-size: 11px;
+    letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  /* Page header */
+  .page-header {
+    padding: 160px 60px 80px;
+    border-bottom: 1px solid var(--line);
+  }
+  .page-header-inner {
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .page-eyebrow {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 16px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+  .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 0.95; letter-spacing: 1px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.5s;
+  }
+  .page-subtitle {
+    font-size: 13px; color: var(--sage); max-width: 340px;
+    text-align: right; line-height: 1.7;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.7s;
+  }
+
+  /* Section patterns */
+  .section-label {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 16px;
+  }
+
+  /* Intro section */
+  .intro {
+    padding: 100px 60px;
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 100px;
+    align-items: start; position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+  .intro-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.2; color: var(--white); margin-bottom: 20px;
+  }
+  .intro-title em { font-style: italic; color: var(--grey-green); }
+  .intro-body {
+    font-size: 15px; line-height: 1.9; color: var(--grey-green); margin-bottom: 24px;
+  }
+  .intro-cta {
+    display: flex; gap: 20px; align-items: center; margin-top: 40px;
+  }
+  .btn-primary {
+    background: var(--forest-deep); color: var(--white);
+    padding: 14px 32px; font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none; font-weight: 500;
+    transition: all 0.3s; font-family: 'DM Sans', sans-serif;
+    border: none; cursor: none; display: inline-flex; align-items: center; gap: 10px;
+  }
+  .btn-primary:hover { background: var(--forest-mid); transform: translateY(-2px); }
+  .btn-ghost {
+    color: var(--grey-green); font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+  }
+  .btn-ghost::after { content: '↓'; transition: transform 0.3s; }
+  .btn-ghost:hover { color: var(--white); }
+  .btn-ghost:hover::after { transform: translateY(4px); }
+
+  /* Framework sections */
+  .template-sections {
+    padding: 100px 60px;
+    background: var(--warm-dark);
+    border-bottom: 1px solid var(--line);
+  }
+  .template-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 80px;
+  }
+  .template-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: 1px; line-height: 1;
+  }
+  .template-subtitle {
+    font-size: 13px; color: var(--sage); max-width: 300px;
+    text-align: right; line-height: 1.7;
+  }
+  .template-list {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .template-item {
+    display: grid; grid-template-columns: 80px 1fr 1.2fr;
+    gap: 40px; align-items: center;
+    padding: 40px 48px; background: var(--black);
+    border-left: 3px solid transparent; transition: all 0.3s ease;
+  }
+  .template-item:hover {
+    background: var(--warm-dark); border-left-color: var(--forest-mid);
+  }
+  .template-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 40px;
+    color: rgba(196,184,154,0.15); line-height: 1; transition: color 0.3s;
+  }
+  .template-item:hover .template-num { color: var(--grey-green); }
+  .template-type {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 10px;
+  }
+  .template-item-title {
+    font-family: 'DM Serif Display', serif; font-size: 26px;
+    color: var(--white); line-height: 1.2;
+  }
+  .template-desc {
+    font-size: 13px; line-height: 1.8; color: var(--sage);
+  }
+
+  /* Insight cards — for the key principles section */
+  .disciplines {
+    padding: 100px 60px;
+    border-bottom: 1px solid var(--line);
+  }
+  .disciplines-header { margin-bottom: 60px; }
+  .disciplines-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.2; color: var(--white); margin-bottom: 16px;
+  }
+  .disciplines-title em { font-style: italic; color: var(--grey-green); }
+  .disciplines-sub {
+    font-size: 14px; line-height: 1.8; color: var(--sage); max-width: 600px;
+  }
+  .discipline-stack {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .discipline-card {
+    background: var(--warm-dark); padding: 48px;
+    position: relative; overflow: hidden; transition: background 0.4s;
+    display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start;
+  }
+  .discipline-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 0; background: var(--forest-mid);
+    transition: height 0.4s ease;
+  }
+  .discipline-card:hover { background: var(--black); }
+  .discipline-card:hover::before { height: 100%; }
+  .discipline-label {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 8px;
+  }
+  .discipline-name {
+    font-family: 'DM Serif Display', serif; font-size: 22px;
+    color: var(--white); line-height: 1.3;
+  }
+  .discipline-desc {
+    font-size: 13px; line-height: 1.8; color: var(--sage);
+  }
+
+  /* Audience section */
+  .audience {
+    padding: 100px 60px;
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 100px;
+    align-items: start;
+    border-bottom: 1px solid var(--line);
+    background: var(--warm-dark);
+  }
+  .audience-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.2; color: var(--white);
+  }
+  .audience-title em { font-style: italic; color: var(--grey-green); }
+  .audience-body {
+    font-size: 15px; line-height: 1.9; color: var(--grey-green); margin-bottom: 32px;
+  }
+  .audience-tags {
+    display: flex; flex-wrap: wrap; gap: 10px;
+  }
+  .tag {
+    border: 1px solid var(--forest-mid); padding: 8px 16px;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--forest-mid); transition: all 0.3s;
+  }
+  .tag:hover {
+    border-color: var(--grey-green); background: rgba(70,98,76,0.15);
+    color: var(--grey-green);
+  }
+
+  /* Download CTA */
+  .download-cta {
+    padding: 120px 60px;
+    text-align: center;
+    position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .download-cta-bg {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(120px, 20vw, 280px);
+    color: rgba(196,184,154,0.03); pointer-events: none;
+    letter-spacing: -10px; white-space: nowrap;
+  }
+  .download-cta-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.3; color: var(--white);
+    max-width: 700px; margin: 0 auto 24px; position: relative;
+  }
+  .download-cta-title em { color: var(--grey-green); font-style: italic; }
+  .download-cta-line {
+    width: 60px; height: 1px; background: var(--forest-mid); margin: 40px auto;
+  }
+
+  /* Coffee / Venmo */
+  .coffee {
+    padding: 100px 60px;
+    background: var(--warm-dark);
+    border-top: 1px solid var(--line);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 100px;
+    align-items: center;
+  }
+  .coffee-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.2; color: var(--white); margin-bottom: 24px;
+  }
+  .coffee-title em { font-style: italic; color: var(--grey-green); }
+  .coffee-body {
+    font-size: 15px; line-height: 1.9; color: var(--grey-green);
+  }
+  .qr-wrapper {
+    display: flex; justify-content: center;
+  }
+  .qr-container {
+    background: #fff; padding: 20px; border-radius: 4px;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+  }
+  .qr-container img {
+    width: 220px; height: auto; display: block;
+  }
+
+  /* Footer */
+  footer {
+    padding: 40px 60px; display: flex;
+    justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--line);
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 18px;
+    letter-spacing: 3px; color: var(--grey-green);
+  }
+  .footer-copy {
+    font-size: 11px; color: var(--sage); letter-spacing: 1px;
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--sage); text-decoration: none; transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--white); }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 9px; }
+    .page-header { padding: 120px 24px 60px; }
+    .page-header-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .page-subtitle { text-align: left; }
+    .intro { padding: 60px 24px; grid-template-columns: 1fr; gap: 40px; }
+    .template-sections { padding: 60px 24px; }
+    .template-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .template-subtitle { text-align: left; }
+    .template-item { grid-template-columns: 50px 1fr; gap: 20px; padding: 28px 24px; }
+    .template-desc { grid-column: 1 / -1; }
+    .disciplines { padding: 60px 24px; }
+    .discipline-card { grid-template-columns: 1fr; gap: 16px; padding: 32px 24px; }
+    .audience { padding: 60px 24px; grid-template-columns: 1fr; gap: 40px; }
+    .download-cta { padding: 80px 24px; }
+    .coffee { padding: 60px 24px; grid-template-columns: 1fr; gap: 48px; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Nav -->
+<nav>
+  <a href="/" class="nav-logo">Jamie Reid</a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/journal">Journal</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Page Header -->
+<header class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <p class="page-eyebrow">Free Framework · Systems & Integrations</p>
+      <h1 class="page-title">CRM & PRM<br>Architecture<br>Framework</h1>
+    </div>
+    <p class="page-subtitle">A framework for designing the technology stack behind modern partner programs — from CRM data architecture and PRM selection through AI readiness and ecosystem platform strategy.</p>
+  </div>
+</header>
+
+<!-- Intro -->
+<section class="intro reveal">
+  <div>
+    <p class="section-label">Overview</p>
+    <h2 class="intro-title">Start with the architecture.<br><em>Then choose the platform.</em></h2>
+  </div>
+  <div>
+    <p class="intro-body">Most partner teams start their infrastructure journey by evaluating PRM platforms. That's usually backwards. Your CRM architecture determines how partner data, opportunities, attribution, and engagement are tracked. The PRM is the partner-facing interface into that system — not the other way around.</p>
+    <p class="intro-body">This framework covers the full technology stack behind modern partner ecosystems: how to structure your CRM for partner operations, how to evaluate and integrate a PRM, what supporting systems are required, how to assess AI readiness, and the five most common mistakes that break partner infrastructure before it scales.</p>
+    <div class="intro-cta">
+      <a href="CRM-PRM_Architecture_Framework.docx" download class="btn-primary" onclick="gtag('event', 'file_download', {'file_name': 'CRM-PRM_Architecture_Framework', 'link_text': 'Download Framework'});">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Framework
+      </a>
+      <a href="#sections" class="btn-ghost">See what's inside</a>
+    </div>
+  </div>
+</section>
+
+<!-- Framework Sections -->
+<section class="template-sections" id="sections">
+  <div class="template-header reveal">
+    <div>
+      <p class="section-label">The Framework</p>
+      <h2 class="template-title">11 Sections</h2>
+    </div>
+    <p class="template-subtitle">From partner motion design through AI readiness — a complete guide to building technology infrastructure that actually supports how partners operate.</p>
+  </div>
+  <div class="template-list">
+    <div class="template-item reveal">
+      <div class="template-num">01</div>
+      <div>
+        <p class="template-type">Foundation</p>
+        <h3 class="template-item-title">Start With Partner Motion</h3>
+      </div>
+      <p class="template-desc">Map your partner motions — resell, referral, co-sell, services, ISV, affiliate, marketplace — before touching technology. Each motion requires a different infrastructure stack, and choosing a platform before defining the motion is one of the most common and costly mistakes in partner ops.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">02</div>
+      <div>
+        <p class="template-type">CRM Design</p>
+        <h3 class="template-item-title">CRM Architecture Comes First</h3>
+      </div>
+      <p class="template-desc">Partner account structure, contact tracking, and opportunity attribution models — the CRM design decisions that determine whether your partner program can be measured at all. Covers parent-child hierarchies, attribution types, and how to maintain integrity through the full sales lifecycle.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">03</div>
+      <div>
+        <p class="template-type">Data Architecture</p>
+        <h3 class="template-item-title">CRM Fields for Partner Analysis</h3>
+      </div>
+      <p class="template-desc">The specific fields required to measure partner pipeline creation, conversion rates, sales cycle length, and revenue contribution. Without these, partner reporting defaults to manual data cleanup — and partner scorecards become impossible to produce reliably.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">04</div>
+      <div>
+        <p class="template-type">Data Architecture</p>
+        <h3 class="template-item-title">Custom Objects for Partner Programs</h3>
+      </div>
+      <p class="template-desc">Certifications, joint business plans, MDF participation, and engagement tracking often require custom CRM objects. This section covers how to evaluate whether a PRM can integrate cleanly with that architecture — and what happens when it can't.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">05</div>
+      <div>
+        <p class="template-type">Integration</p>
+        <h3 class="template-item-title">CRM–PRM Integration Architecture</h3>
+      </div>
+      <p class="template-desc">The four integration workflows that determine how seamlessly partner operations run: deal registration to opportunity creation, lead sharing and routing, opportunity updates to partner visibility, and partner attribution to revenue reporting.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">06</div>
+      <div>
+        <p class="template-type">Supporting Systems</p>
+        <h3 class="template-item-title">Additional Systems Often Required</h3>
+      </div>
+      <p class="template-desc">LMS platforms, MDF management tools, partner marketing automation, ecosystem account mapping, and support case management — the supporting systems most PRMs don't cover. Includes guidance on case auto-routing to the partner associated with each customer's most recent sale.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">07</div>
+      <div>
+        <p class="template-type">Partner Experience</p>
+        <h3 class="template-item-title">Portal Usability</h3>
+      </div>
+      <p class="template-desc">Even the most powerful PRM fails if partners don't use it. The usability considerations that matter most — deal registration speed, single sign-on, content discoverability, and mobile access — and why friction in deal registration is one of the leading causes of partners bypassing the program entirely.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">08</div>
+      <div>
+        <p class="template-type">Partner Experience</p>
+        <h3 class="template-item-title">Branding & Portal Customization</h3>
+      </div>
+      <p class="template-desc">A partner portal should feel like an extension of the company's brand. Covers CSS customization, partner-specific landing pages, localization, and why Salesforce Experience Cloud typically offers the most flexibility.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">09</div>
+      <div>
+        <p class="template-type">Platform Strategy</p>
+        <h3 class="template-item-title">Traditional PRM vs. Ecosystem Platform</h3>
+      </div>
+      <p class="template-desc">Not every partner program needs a traditional PRM. When reseller-focused platforms make sense versus ecosystem platforms built for co-sell, ISV, and technology alliance programs — and how hybrid stacks are increasingly the answer for modern partner organizations.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">10</div>
+      <div>
+        <p class="template-type">Vendor Landscape</p>
+        <h3 class="template-item-title">Platform Comparison</h3>
+      </div>
+      <p class="template-desc">A reference comparison of 13 platforms across the PRM and ecosystem platform landscape — including Magentrix, Impartner, Allbound, ZINFI, PartnerStack, Crossbeam, Reveal, and others — with strengths and limitations for each.</p>
+    </div>
+    <div class="template-item reveal">
+      <div class="template-num">11</div>
+      <div>
+        <p class="template-type">AI Readiness</p>
+        <h3 class="template-item-title">Is Your Stack AI-Ready?</h3>
+      </div>
+      <p class="template-desc">CRM and PRM readiness for AI tooling, including AI-assisted partner-to-ICP matching — using partner account data to surface which partners are best positioned for specific opportunities, territories, and customer segments. Covers what data you need before AI adds reliable value.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Key Principles -->
+<section class="disciplines" id="principles">
+  <div class="disciplines-header reveal">
+    <p class="section-label">The Core Arguments</p>
+    <h2 class="disciplines-title">Five mistakes that break<br><em>partner infrastructure.</em></h2>
+    <p class="disciplines-sub">The second half of the framework documents the CRM architecture decisions that most often undermine partner programs — and what to design instead. These aren't edge cases. They're the issues that show up in almost every partner org that has grown faster than its infrastructure.</p>
+  </div>
+  <div class="discipline-stack">
+    <div class="discipline-card reveal">
+      <div>
+        <p class="discipline-label">Mistake 1</p>
+        <h3 class="discipline-name">No Attribution Model</h3>
+      </div>
+      <p class="discipline-desc">Trying to track partner contribution with a single field — or no structured model at all. When multiple partner motions exist (resell, co-sell, referral), a single attribution field becomes meaningless. Without a clear model, partner scorecards are unreliable and program ROI is impossible to defend.</p>
+    </div>
+    <div class="discipline-card reveal">
+      <div>
+        <p class="discipline-label">Mistake 2</p>
+        <h3 class="discipline-name">Partner Accounts Not Structured Correctly</h3>
+      </div>
+      <p class="discipline-desc">Treating partner companies the same as customer accounts in the CRM. Partner contacts get mixed with customer contacts, reporting requires manual filtering, and account ownership becomes contested. A defined partner account type and segmentation structure fixes this — and enables the same analytical rigor applied to the customer base.</p>
+    </div>
+    <div class="discipline-card reveal">
+      <div>
+        <p class="discipline-label">Mistake 3</p>
+        <h3 class="discipline-name">Missing Fields for Analysis</h3>
+      </div>
+      <p class="discipline-desc">Attempting to measure partner performance without the right data structure in place. The most commonly missing fields — partner sourced pipeline, partner motion type, tier, program status, and account owner — are often absent because they were never designed in. The result is manual spreadsheet tracking that doesn't scale.</p>
+    </div>
+    <div class="discipline-card reveal">
+      <div>
+        <p class="discipline-label">Mistake 4</p>
+        <h3 class="discipline-name">Custom Objects That Don't Integrate</h3>
+      </div>
+      <p class="discipline-desc">Selecting a PRM that can't integrate cleanly with the CRM's custom object architecture. When a PRM requires recreating certification records, JBPs, or MDF data inside its own system, operational overhead compounds and data integrity degrades. Validating this before selection is essential.</p>
+    </div>
+    <div class="discipline-card reveal">
+      <div>
+        <p class="discipline-label">Mistake 5</p>
+        <h3 class="discipline-name">Overcomplicated Deal Registration</h3>
+      </div>
+      <p class="discipline-desc">Too many required fields, multi-stage approvals, and opaque conflict resolution. Deal registration is the most visible feature of any PRM — and the one partners abandon first when it becomes difficult. When partners stop registering deals, the program loses visibility into the pipeline it's supposed to be driving.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Audience -->
+<section class="audience">
+  <div class="reveal">
+    <p class="section-label">Who This Is For</p>
+    <h2 class="audience-title">Teams building<br><em>the technology layer.</em></h2>
+  </div>
+  <div class="reveal">
+    <p class="audience-body">Whether you're selecting a PRM for the first time, redesigning a CRM that wasn't built with partners in mind, or evaluating whether your current stack can support AI tooling — this framework gives you the architecture questions to ask before committing to a platform.</p>
+    <div class="audience-tags">
+      <span class="tag">Partner Operations</span>
+      <span class="tag">Revenue Operations</span>
+      <span class="tag">Channel Operations</span>
+      <span class="tag">VP of Partnerships</span>
+      <span class="tag">Alliance Leaders</span>
+      <span class="tag">Sales Operations</span>
+      <span class="tag">Systems Architects</span>
+      <span class="tag">CRM Administrators</span>
+    </div>
+  </div>
+</section>
+
+<!-- Download CTA -->
+<section class="download-cta">
+  <div class="download-cta-bg">ARCHITECTURE</div>
+  <p class="reveal" style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:32px;">Get the Framework</p>
+  <h2 class="download-cta-title reveal">Ready to build<br><em>the right foundation?</em></h2>
+  <div class="download-cta-line reveal"></div>
+  <div class="reveal">
+    <a href="CRM-PRM_Architecture_Framework.docx" download class="btn-primary" onclick="gtag('event', 'file_download', {'file_name': 'CRM-PRM_Architecture_Framework', 'link_text': 'Download Framework'});">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download Framework
+    </a>
+  </div>
+</section>
+
+<!-- Coffee / Venmo -->
+<section class="coffee">
+  <div class="reveal">
+    <p class="section-label">One More Thing</p>
+    <h2 class="coffee-title">Good information<br><em>should be free.</em></h2>
+    <p class="coffee-body">You shouldn't have to pay for useful information. But if you found this framework valuable and want to buy me a coffee for the trouble, I'd happily take the donation.</p>
+  </div>
+  <div class="qr-wrapper reveal">
+    <div class="qr-container">
+      <img src="venmo-qr.png" alt="Venmo QR Code — scan to send a tip">
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">Jamie Reid</div>
+  <p class="footer-copy">&copy; 2026 Jamie Reid. Partner Ecosystem Strategy.</p>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/jamie-reid-862864b/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="/" rel="noopener">Home</a>
+    <a href="/#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+
+</body>
+</html>
