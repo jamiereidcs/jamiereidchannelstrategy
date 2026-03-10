@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARR Forecasting & Modeling — Jamie Reid</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LL3TBPZYFN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LL3TBPZYFN');
+</script>
+<style>
+  :root {
+    --black: #141414;
+    --warm-dark: #1a1a1a;
+    --forest-deep: #1b3a2e;
+    --forest-mid: #46624c;
+    --sage: #687764;
+    --grey-green: #a1aca6;
+    --white: #bebfb9;
+    --accent: #46624c;
+    --accent-light: #687764;
+    --line: rgba(70,98,76,0.35);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed; width: 10px; height: 10px;
+    background: var(--accent); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+  }
+  .cursor-ring {
+    position: fixed; width: 36px; height: 36px;
+    border: 1px solid var(--grey-green); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.15s ease; opacity: 0.6;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px 60px;
+  }
+  nav::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(20,20,18,0.95), transparent);
+    pointer-events: none;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px;
+    letter-spacing: 4px; color: var(--white);
+    position: relative; z-index: 1;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex; gap: 40px; list-style: none;
+    position: relative; z-index: 1;
+  }
+  .nav-links a {
+    color: var(--sage); text-decoration: none;
+    font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  /* Hero / Page Header */
+  .page-hero {
+    padding: 160px 60px 100px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '05';
+    position: absolute; right: 60px; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(160px, 22vw, 320px);
+    color: rgba(70,98,76,0.06);
+    line-height: 1; pointer-events: none;
+    letter-spacing: -4px;
+  }
+  .hero-breadcrumb {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 48px;
+  }
+  .hero-breadcrumb a {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--sage); text-decoration: none; transition: color 0.3s;
+  }
+  .hero-breadcrumb a:hover { color: var(--white); }
+  .hero-breadcrumb span { color: var(--line); font-size: 10px; }
+  .hero-breadcrumb-current {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--forest-mid);
+  }
+  .hero-type-label {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 20px;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 8vw, 110px);
+    line-height: 0.92; letter-spacing: 1px;
+    color: var(--white); max-width: 900px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+  .hero-title em {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic; color: var(--grey-green);
+  }
+  .hero-sub {
+    margin-top: 40px; font-size: 15px; line-height: 1.85;
+    color: var(--grey-green); max-width: 640px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+  .hero-meta {
+    display: flex; gap: 40px; margin-top: 48px; align-items: center;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 6px; }
+  .hero-meta-label {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--forest-mid);
+  }
+  .hero-meta-value {
+    font-size: 12px; letter-spacing: 1px; color: var(--grey-green);
+  }
+  .hero-meta-divider { width: 1px; height: 40px; background: var(--line); }
+
+  /* Download CTAs */
+  .download-bar {
+    display: flex; gap: 16px; align-items: center;
+    padding: 48px 60px; background: var(--warm-dark);
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .download-bar-label {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--forest-mid); margin-right: 8px;
+  }
+  .btn-download {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--forest-deep); color: var(--white);
+    padding: 14px 28px; font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    font-family: 'DM Sans', sans-serif; font-weight: 500;
+    border: 1px solid rgba(70,98,76,0.4);
+    transition: all 0.3s; cursor: none;
+  }
+  .btn-download:hover {
+    background: var(--forest-mid);
+    border-color: var(--grey-green);
+    transform: translateY(-2px);
+  }
+  .btn-download svg { width: 14px; height: 14px; opacity: 0.7; }
+  .btn-download-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--sage); padding: 14px 0;
+    font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    font-family: 'DM Sans', sans-serif; font-weight: 500;
+    transition: color 0.3s; cursor: none;
+  }
+  .btn-download-ghost:hover { color: var(--white); }
+  .btn-download-ghost::after { content: '→'; transition: transform 0.3s; }
+  .btn-download-ghost:hover::after { transform: translateX(4px); }
+
+  /* Main Content */
+  .framework-body { max-width: 1200px; margin: 0 auto; }
+
+  /* Section blocks */
+  .fw-section {
+    padding: 80px 60px;
+    border-bottom: 1px solid var(--line);
+  }
+  .fw-section:last-child { border-bottom: none; }
+  .fw-section-inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .fw-section-label {
+    font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 12px;
+  }
+  .fw-section-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px; color: rgba(70,98,76,0.15);
+    line-height: 1; margin-bottom: 16px;
+  }
+  .fw-section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(22px, 2.5vw, 30px);
+    line-height: 1.25; color: var(--white);
+  }
+  .fw-section-title em { font-style: italic; color: var(--grey-green); }
+
+  /* Discipline cards grid */
+  .discipline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2px;
+  }
+  .discipline-card {
+    background: var(--warm-dark); padding: 32px 28px;
+    border-left: 3px solid transparent;
+    transition: all 0.3s;
+  }
+  .discipline-card:hover { border-left-color: var(--forest-mid); }
+  .discipline-card-icon {
+    font-size: 22px; margin-bottom: 16px; opacity: 0.8;
+  }
+  .discipline-card-title {
+    font-family: 'DM Sans', sans-serif; font-weight: 500;
+    font-size: 13px; letter-spacing: 1px; color: var(--white);
+    margin-bottom: 10px; text-transform: uppercase;
+  }
+  .discipline-card-desc {
+    font-size: 12px; line-height: 1.75; color: var(--grey-green);
+  }
+
+  /* Metric rows */
+  .metric-list { display: flex; flex-direction: column; gap: 2px; }
+  .metric-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 32px;
+    align-items: start;
+    padding: 24px 28px;
+    background: var(--warm-dark);
+    border-left: 3px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .metric-row:hover { border-left-color: var(--forest-mid); }
+  .metric-row-name {
+    font-family: 'DM Sans', sans-serif; font-weight: 500;
+    font-size: 12px; letter-spacing: 1px; color: var(--white);
+    text-transform: uppercase;
+  }
+  .metric-row-desc {
+    font-size: 12px; line-height: 1.75; color: var(--grey-green);
+  }
+
+  /* Callout box */
+  .callout-box {
+    background: var(--warm-dark);
+    border-left: 3px solid var(--forest-mid);
+    padding: 32px 36px;
+    margin-top: 32px;
+  }
+  .callout-box-label {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 12px;
+  }
+  .callout-box-text {
+    font-size: 13px; line-height: 1.85; color: var(--grey-green);
+  }
+  .callout-box-text strong { color: var(--white); font-weight: 500; }
+
+  /* Formula block */
+  .formula-block {
+    background: var(--warm-dark);
+    border-left: 3px solid var(--forest-mid);
+    padding: 28px 32px; margin-top: 24px;
+  }
+  .formula-block-label {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 12px;
+  }
+  .formula-text {
+    font-family: 'Courier New', monospace;
+    font-size: 13px; color: var(--grey-green);
+    line-height: 1.7; letter-spacing: 0.5px;
+  }
+
+  /* Tag pills */
+  .tag-row {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px;
+  }
+  .tag-pill {
+    border: 1px solid var(--forest-mid);
+    padding: 6px 14px; font-size: 9px;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--forest-mid); transition: all 0.3s;
+  }
+  .tag-pill:hover {
+    border-color: var(--grey-green); color: var(--grey-green);
+    background: rgba(70,98,76,0.08);
+  }
+
+  /* Audience tag */
+  .audience-row {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px;
+    padding-top: 24px; border-top: 1px solid var(--line);
+  }
+  .audience-label {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--sage); align-self: center; margin-right: 8px;
+  }
+  .audience-tag {
+    background: rgba(70,98,76,0.12); border: 1px solid rgba(70,98,76,0.3);
+    padding: 5px 12px; font-size: 9px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--grey-green);
+  }
+
+  /* Venmo / donation section */
+  .venmo-section {
+    padding: 80px 60px;
+    background: var(--warm-dark);
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .venmo-label {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--forest-mid); margin-bottom: 20px;
+  }
+  .venmo-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 40px); line-height: 1.2;
+    color: var(--white); margin-bottom: 20px;
+  }
+  .venmo-title em { font-style: italic; color: var(--grey-green); }
+  .venmo-body {
+    font-size: 13px; line-height: 1.85; color: var(--grey-green);
+  }
+  .venmo-qr-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 20px;
+  }
+  .venmo-qr {
+    width: 160px; height: 160px;
+    background: var(--black);
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--sage); font-size: 11px; letter-spacing: 1px;
+    text-align: center; padding: 16px;
+  }
+  .venmo-handle {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--sage);
+  }
+
+  /* Footer */
+  footer {
+    padding: 60px; border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 20px;
+    letter-spacing: 4px; color: var(--white);
+  }
+  .footer-copy {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--sage);
+  }
+  .footer-links {
+    display: flex; gap: 32px;
+  }
+  .footer-links a {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--sage); text-decoration: none; transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--white); }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+    nav { padding: 18px 24px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 9px; }
+    .page-hero { padding: 120px 24px 60px; }
+    .page-hero::before { display: none; }
+    .download-bar { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+    .fw-section { padding: 48px 24px; }
+    .fw-section-inner { grid-template-columns: 1fr; gap: 32px; }
+    .discipline-grid { grid-template-columns: 1fr; }
+    .metric-row { grid-template-columns: 1fr; gap: 8px; }
+    .venmo-section { padding: 48px 24px; grid-template-columns: 1fr; gap: 40px; }
+    footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Nav -->
+<nav>
+  <a href="/" class="nav-logo">Jamie Reid</a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#journal">Journal</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="https://www.linkedin.com/in/jamie-reid-862864b/" target="_blank" rel="noopener">LinkedIn</a></li>
+  </ul>
+</nav>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="hero-breadcrumb">
+    <a href="/">Home</a>
+    <span>/</span>
+    <span class="hero-breadcrumb-current">ARR Forecasting & Modeling</span>
+  </div>
+  <p class="hero-type-label">Revenue Operations</p>
+  <h1 class="hero-title">ARR Forecasting<br><em>&amp; Modeling</em></h1>
+  <p class="hero-sub">A working framework for building partner-sourced ARR forecasting models, pipeline attribution structures, and executive reporting visibility — built from real revenue operations work across multiple companies.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Category</span>
+      <span class="hero-meta-value">Revenue Operations</span>
+    </div>
+    <div class="hero-meta-divider"></div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Scope</span>
+      <span class="hero-meta-value">Multi-company</span>
+    </div>
+    <div class="hero-meta-divider"></div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Format</span>
+      <span class="hero-meta-value">Word Document (.docx)</span>
+    </div>
+  </div>
+</section>
+
+<!-- Download Bar -->
+<div class="download-bar">
+  <span class="download-bar-label">Download</span>
+  <a href="/arr modeling/Partner_ARR_Forecast_Modeling_Framework.docx"
+     class="btn-download"
+     onclick="gtag('event', 'file_download', { event_category: 'Framework', event_label: 'ARR Forecasting & Modeling Framework', value: 1 });">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+    </svg>
+    ARR Forecasting & Modeling Framework
+  </a>
+  <a href="/" class="btn-download-ghost" style="margin-left:auto;">Back to Work</a>
+</div>
+
+<!-- Framework Body -->
+<div class="framework-body">
+
+  <!-- Section 1: Revenue Classification -->
+  <div class="fw-section">
+    <div class="fw-section-inner">
+      <div class="reveal">
+        <p class="fw-section-label">Section 01</p>
+        <div class="fw-section-num">01</div>
+        <h2 class="fw-section-title">Partner Revenue <em>Classification</em></h2>
+      </div>
+      <div class="reveal">
+        <div class="discipline-grid">
+          <div class="discipline-card">
+            <div class="discipline-card-icon">📥</div>
+            <div class="discipline-card-title">Partner-Sourced</div>
+            <div class="discipline-card-desc">Opportunities originated by a partner through active prospecting, referral, or co-sell motion. Partner holds sourcing credit regardless of close involvement.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">🤝</div>
+            <div class="discipline-card-title">Partner-Influenced</div>
+            <div class="discipline-card-desc">Opportunities where a partner accelerated, qualified, or technically validated a deal that was vendor-sourced. Influence weight tracked separately from sourced ARR.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">🔄</div>
+            <div class="discipline-card-title">Resale / Transacted</div>
+            <div class="discipline-card-desc">Revenue transacted through a reseller or distributor — tracked at the point-of-sale and mapped back to partner tier, region, and deal type.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">📈</div>
+            <div class="discipline-card-title">Expansion ARR</div>
+            <div class="discipline-card-desc">Renewal and upsell revenue on partner-attached accounts. Tracked by partner role in the expansion motion — renewal assist, QBR involvement, or upsell lead.</div>
+          </div>
+        </div>
+        <div class="tag-row">
+          <span class="tag-pill">CRM Required</span>
+          <span class="tag-pill">Partner Attribution</span>
+          <span class="tag-pill">Sourced vs. Influenced</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Pipeline Structure -->
+  <div class="fw-section" style="background: var(--warm-dark);">
+    <div class="fw-section-inner">
+      <div class="reveal">
+        <p class="fw-section-label">Section 02</p>
+        <div class="fw-section-num">02</div>
+        <h2 class="fw-section-title">Partner Pipeline <em>Structure</em></h2>
+      </div>
+      <div class="reveal">
+        <div class="metric-list">
+          <div class="metric-row">
+            <div class="metric-row-name">Qualified Pipeline</div>
+            <div class="metric-row-desc">Opportunities that have met minimum qualification criteria — BANT, mutual commit, or defined entry stage — and are tracked as active in CRM with a partner association.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">Weighted Pipeline</div>
+            <div class="metric-row-desc">Qualified pipeline adjusted by stage-level close probability. Weighted figures are used for rollup forecasting and board reporting. Partner-sourced weighted pipeline tracked separately.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">Coverage Ratio</div>
+            <div class="metric-row-desc">Total pipeline divided by ARR target. Minimum 3:1 coverage for commit-level confidence; 4–5:1 for best case. Tracked by partner tier, region, and segment.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">Stage Velocity</div>
+            <div class="metric-row-desc">Average number of days an opportunity spends in each pipeline stage. Partner-attached deals benchmarked against direct motion to identify acceleration or friction patterns.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">Pipeline at Risk</div>
+            <div class="metric-row-desc">Opportunities that have stalled (no activity in 14–21 days), aged past expected close date, or lost partner engagement signals — flagged for intervention.</div>
+          </div>
+        </div>
+        <div class="callout-box">
+          <p class="callout-box-label">Framework Note</p>
+          <p class="callout-box-text">Pipeline coverage targets should be set <strong>by partner type</strong>, not globally. Reseller-sourced deals typically carry different velocity profiles than alliance or GSI-influenced opportunities — conflating them masks real forecast risk.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: Forecast Modeling -->
+  <div class="fw-section">
+    <div class="fw-section-inner">
+      <div class="reveal">
+        <p class="fw-section-label">Section 03</p>
+        <div class="fw-section-num">03</div>
+        <h2 class="fw-section-title">Forecast <em>Modeling</em></h2>
+      </div>
+      <div class="reveal">
+        <div class="formula-block">
+          <p class="formula-block-label">Core ARR Forecast Formula</p>
+          <p class="formula-text">
+            Partner ARR Forecast =<br>
+            &nbsp;&nbsp;(Qualified Pipeline × Conversion Rate)<br>
+            &nbsp;&nbsp;+ Renewal ARR at Risk Adjusted<br>
+            &nbsp;&nbsp;+ Expansion Pipeline (Weighted)<br><br>
+            Conversion Rate = Closed Won ÷ Qualified Entered (trailing 90d)
+          </p>
+        </div>
+        <div class="discipline-grid" style="margin-top:2px;">
+          <div class="discipline-card">
+            <div class="discipline-card-icon">📊</div>
+            <div class="discipline-card-title">Commit Forecast</div>
+            <div class="discipline-card-desc">High-confidence opportunities with clear close signals, mutual commitment, and partner confirmation. Rep-submitted, manager-reviewed. Used for board-level reporting.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">🎯</div>
+            <div class="discipline-card-title">Best Case Forecast</div>
+            <div class="discipline-card-desc">All commit-level deals plus additional qualified opportunities with meaningful close potential. Reflects upside if momentum holds across all active partner motions.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">📉</div>
+            <div class="discipline-card-title">Downside Scenario</div>
+            <div class="discipline-card-desc">Conservative view that discounts pipeline at risk, accounts with low partner engagement, and deals dependent on single-threaded champion relationships.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">🔁</div>
+            <div class="discipline-card-title">Rolling 90-Day Model</div>
+            <div class="discipline-card-desc">Forecast model updated on a rolling 90-day basis using trailing conversion rates, historical seasonality, and partner program tier adjustments.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: ARR Attribution -->
+  <div class="fw-section" style="background: var(--warm-dark);">
+    <div class="fw-section-inner">
+      <div class="reveal">
+        <p class="fw-section-label">Section 04</p>
+        <div class="fw-section-num">04</div>
+        <h2 class="fw-section-title">ARR Attribution <em>Model</em></h2>
+      </div>
+      <div class="reveal">
+        <div class="metric-list">
+          <div class="metric-row">
+            <div class="metric-row-name">First-Touch Attribution</div>
+            <div class="metric-row-desc">100% of ARR credit assigned to the partner who originated the opportunity. Used for sourced ARR reporting and partner compensation calculations.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">Multi-Touch Attribution</div>
+            <div class="metric-row-desc">ARR credit distributed across all partners involved in the deal lifecycle — sourcing, technical validation, proposal support, and close assist. Weighted by role and stage of involvement.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">Influenced ARR (Separate)</div>
+            <div class="metric-row-desc">Tracks deal velocity improvement, win rate lift, and deal size increase attributable to partner involvement. Reported alongside but not included in sourced ARR totals.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">Renewal Attribution</div>
+            <div class="metric-row-desc">Partner credit on renewals assigned based on documented engagement during the renewal cycle — QBR participation, escalation support, or expansion proposal involvement.</div>
+          </div>
+        </div>
+        <div class="callout-box">
+          <p class="callout-box-label">Worked Example</p>
+          <p class="callout-box-text">A <strong>$100K ARR deal</strong> sourced by Partner A, technically validated by Partner B, and closed with reseller Partner C: Under first-touch, Partner A receives 100% sourcing credit. Under multi-touch, a weighted split applies — e.g., 60% / 25% / 15% based on defined role weights. Influenced ARR is tracked separately for Partners B and C regardless of attribution model used.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5: Capacity & Seller Metrics -->
+  <div class="fw-section">
+    <div class="fw-section-inner">
+      <div class="reveal">
+        <p class="fw-section-label">Section 05</p>
+        <div class="fw-section-num">05</div>
+        <h2 class="fw-section-title">Partner Capacity <em>&amp; Seller Metrics</em></h2>
+      </div>
+      <div class="reveal">
+        <div class="formula-block">
+          <p class="formula-block-label">Effective Sellers Formula</p>
+          <p class="formula-text">
+            Effective Sellers = Active Sellers × Productivity Factor<br><br>
+            Productivity Factor = Avg Pipeline per Rep ÷ Target Pipeline per Rep<br><br>
+            Partner Pipeline Production =<br>
+            &nbsp;&nbsp;Effective Sellers × Avg Deal Size × Conversion Rate × Frequency
+          </p>
+        </div>
+        <div class="discipline-grid" style="margin-top:2px;">
+          <div class="discipline-card">
+            <div class="discipline-card-icon">👥</div>
+            <div class="discipline-card-title">Active Seller Count</div>
+            <div class="discipline-card-desc">Partners with at least one qualified opportunity registered in the trailing 90 days. Active seller counts drive capacity modeling and territory planning assumptions.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">⚡</div>
+            <div class="discipline-card-title">Productivity Index</div>
+            <div class="discipline-card-desc">Ratio of actual pipeline generated per partner seller vs. the established benchmark for their tier and segment. Used to identify underperforming partners before they become forecast gaps.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">🗓️</div>
+            <div class="discipline-card-title">Booth / Event Model</div>
+            <div class="discipline-card-desc">Forecast uplift from partner-driven events modeled using historical conversion rates. Event pipeline tracked separately with a 90-day post-event attribution window applied.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 6: Core ARR Metrics -->
+  <div class="fw-section" style="background: var(--warm-dark);">
+    <div class="fw-section-inner">
+      <div class="reveal">
+        <p class="fw-section-label">Section 06</p>
+        <div class="fw-section-num">06</div>
+        <h2 class="fw-section-title">Core ARR <em>Metrics</em></h2>
+      </div>
+      <div class="reveal">
+        <div class="metric-list">
+          <div class="metric-row">
+            <div class="metric-row-name">Partner-Sourced ARR %</div>
+            <div class="metric-row-desc">Partner-sourced closed ARR divided by total new ARR for the period. Primary measure of channel contribution to revenue. Benchmarked quarterly and trended YoY.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">Win Rate by Partner Type</div>
+            <div class="metric-row-desc">Close rate segmented by partner tier, type (reseller / alliance / GSI), and deal size band. Identifies where partner involvement creates the most competitive lift.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">Average Deal Size</div>
+            <div class="metric-row-desc">Average ARR per closed deal, segmented by partner-attached vs. direct. Partner-attached deals often show size lift — tracking this supports program investment justification.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">Net Revenue Retention (Partner)</div>
+            <div class="metric-row-desc">ARR retained and expanded on partner-attached accounts, expressed as a percentage of beginning ARR. Tracks partner impact on customer lifetime value.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">Forecast Accuracy</div>
+            <div class="metric-row-desc">Actual closed ARR vs. submitted forecast at 30-, 60-, and 90-day intervals. Tracked by channel segment to surface systematic forecast inflation or sandbagging patterns.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">Pipeline to ARR Ratio</div>
+            <div class="metric-row-desc">Total qualified partner pipeline divided by ARR target for the period. Minimum thresholds defined by tier; tracked weekly to catch coverage gaps before quarter-end.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 7: Forecast Confidence Scoring -->
+  <div class="fw-section">
+    <div class="fw-section-inner">
+      <div class="reveal">
+        <p class="fw-section-label">Section 07</p>
+        <div class="fw-section-num">07</div>
+        <h2 class="fw-section-title">Forecast Confidence <em>Scoring</em></h2>
+      </div>
+      <div class="reveal">
+        <div class="discipline-grid">
+          <div class="discipline-card">
+            <div class="discipline-card-icon">🟢</div>
+            <div class="discipline-card-title">High Confidence</div>
+            <div class="discipline-card-desc">Active partner engagement, documented mutual close plan, executive alignment on both sides, legal in progress. Score: 80–100. Included in commit forecast.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">🟡</div>
+            <div class="discipline-card-title">Medium Confidence</div>
+            <div class="discipline-card-desc">Partner engaged but close plan not formalized, or timeline has shifted once. Score: 50–79. Included in best case. Requires bi-weekly check-in cadence.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">🔴</div>
+            <div class="discipline-card-title">Low Confidence</div>
+            <div class="discipline-card-desc">Stalled activity, single-threaded, or partner disengaged. Score: below 50. Excluded from forecast; flagged for recovery action or pipeline scrub.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">⚪</div>
+            <div class="discipline-card-title">Unscored / New</div>
+            <div class="discipline-card-desc">Newly registered or recently qualified — not yet assessed. Must be scored within 5 business days of qualification. Excluded from all forecast tiers until scored.</div>
+          </div>
+        </div>
+        <div class="callout-box">
+          <p class="callout-box-label">Scoring Application</p>
+          <p class="callout-box-text">Confidence scores are assigned by channel managers at weekly pipeline reviews, not automatically by CRM stage. <strong>Stage ≠ confidence.</strong> A deal can be at late-stage with low confidence if partner engagement has dropped — and this distinction is what separates accurate forecasting from wishful pipeline.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 8: Executive Dashboard -->
+  <div class="fw-section" style="background: var(--warm-dark);">
+    <div class="fw-section-inner">
+      <div class="reveal">
+        <p class="fw-section-label">Section 08</p>
+        <div class="fw-section-num">08</div>
+        <h2 class="fw-section-title">Executive Dashboard <em>Structure</em></h2>
+      </div>
+      <div class="reveal">
+        <div class="metric-list">
+          <div class="metric-row">
+            <div class="metric-row-name">Channel Revenue Summary</div>
+            <div class="metric-row-desc">Partner-sourced ARR vs. target, YoY growth, and channel mix % — updated weekly. Includes prior quarter actuals for baseline comparison and executive commentary section.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">Pipeline Health View</div>
+            <div class="metric-row-desc">Total qualified pipeline, coverage ratio by segment, stage distribution, and confidence tier breakdown. Designed for VP/CRO weekly review — single-screen layout, no drill-down required.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">Forecast Rollup</div>
+            <div class="metric-row-desc">Commit, best case, and downside ARR by region and partner tier. Includes gap-to-target, forecast accuracy trend, and prior-period variance explanation.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">Partner Contribution View</div>
+            <div class="metric-row-desc">Top 10 partners by pipeline and closed ARR, deal velocity comparison vs. baseline, and partner-tier performance vs. program expectations.</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-row-name">At-Risk & Action Items</div>
+            <div class="metric-row-desc">Deals in pipeline scrub, partners with declining engagement metrics, renewals at risk by partner-attached account, and recovery actions with owners and due dates.</div>
+          </div>
+        </div>
+        <div class="audience-row">
+          <span class="audience-label">Built for</span>
+          <span class="audience-tag">CRO</span>
+          <span class="audience-tag">VP Channel</span>
+          <span class="audience-tag">RevOps</span>
+          <span class="audience-tag">Channel Managers</span>
+          <span class="audience-tag">Finance</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 9: Data Architecture -->
+  <div class="fw-section">
+    <div class="fw-section-inner">
+      <div class="reveal">
+        <p class="fw-section-label">Section 09</p>
+        <div class="fw-section-num">09</div>
+        <h2 class="fw-section-title">Data Architecture <em>Requirements</em></h2>
+      </div>
+      <div class="reveal">
+        <div class="discipline-grid">
+          <div class="discipline-card">
+            <div class="discipline-card-icon">🗄️</div>
+            <div class="discipline-card-title">CRM Object Structure</div>
+            <div class="discipline-card-desc">Opportunity records must carry partner association fields, sourcing type, influence flags, and attribution weight. Partner Account object linked at the relationship level, not just the deal level.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">🔗</div>
+            <div class="discipline-card-title">PRM Integration</div>
+            <div class="discipline-card-desc">Deal registration data from PRM (Alliances, Impartner, Salesforce PRM) must sync to CRM with source-of-truth logic defined. Conflicts resolved by CRM ownership rules, not manual override.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">📋</div>
+            <div class="discipline-card-title">Required Opportunity Fields</div>
+            <div class="discipline-card-desc">Partner name, partner type, sourcing classification, influence weight, registration date, last partner activity date, and close confidence score. All required for forecast inclusion.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">🔍</div>
+            <div class="discipline-card-title">Reporting Layer</div>
+            <div class="discipline-card-desc">Forecast and pipeline reports built on validated CRM data — not spreadsheet exports. Reporting layer (Salesforce dashboards, Tableau, or Clari) connected to live opportunity data with defined refresh cadence.</div>
+          </div>
+        </div>
+        <div class="callout-box">
+          <p class="callout-box-label">Data Quality Note</p>
+          <p class="callout-box-text">Forecast accuracy is only as good as CRM hygiene. This framework includes <strong>field completion rate tracking</strong> as a leading indicator of data quality — if required fields aren't populated, deals are excluded from forecast rollup until remediated. This creates accountability at the rep level without requiring a separate audit process.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 10: Best Practices -->
+  <div class="fw-section" style="background: var(--warm-dark);">
+    <div class="fw-section-inner">
+      <div class="reveal">
+        <p class="fw-section-label">Section 10</p>
+        <div class="fw-section-num">10</div>
+        <h2 class="fw-section-title">Best Practices <em>Summary</em></h2>
+      </div>
+      <div class="reveal">
+        <div class="discipline-grid">
+          <div class="discipline-card">
+            <div class="discipline-card-icon">📌</div>
+            <div class="discipline-card-title">Forecasting Principles</div>
+            <div class="discipline-card-desc">Use trailing 90-day conversion rates — not historical averages. Set coverage targets by partner type. Never include unscored pipeline in any forecast tier. Review weekly, not monthly.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">📡</div>
+            <div class="discipline-card-title">Reporting Discipline</div>
+            <div class="discipline-card-desc">Report sourced ARR and influenced ARR separately — always. Never blend them to make numbers look better. Executives need to trust the model before they'll act on it.</div>
+          </div>
+          <div class="discipline-card">
+            <div class="discipline-card-icon">⚙️</div>
+            <div class="discipline-card-title">Operations Hygiene</div>
+            <div class="discipline-card-desc">Run a formal pipeline scrub at least bi-weekly with channel managers. Stale deals inflate forecast and erode leadership confidence faster than missed numbers do.</div>
+          </div>
+        </div>
+        <div class="audience-row">
+          <span class="audience-label">Best applied by</span>
+          <span class="audience-tag">Head of Channel</span>
+          <span class="audience-tag">RevOps Leaders</span>
+          <span class="audience-tag">Channel Ops Managers</span>
+          <span class="audience-tag">Alliances Teams</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /framework-body -->
+
+<!-- Download CTA repeated -->
+<div class="download-bar" style="border-top: 1px solid var(--line); border-bottom: none;">
+  <span class="download-bar-label">Download the Framework</span>
+  <a href="/arr modeling/Partner_ARR_Forecast_Modeling_Framework.docx"
+     class="btn-download"
+     onclick="gtag('event', 'file_download', { event_category: 'Framework', event_label: 'ARR Forecasting & Modeling Framework - Bottom CTA', value: 1 });">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+    </svg>
+    ARR Forecasting & Modeling Framework (.docx)
+  </a>
+</div>
+
+<!-- Venmo / Support Section -->
+<div class="venmo-section">
+  <div class="reveal">
+    <p class="venmo-label">Support This Work</p>
+    <h2 class="venmo-title">Found this useful?<br><em>Buy me a coffee.</em></h2>
+    <p class="venmo-body">These frameworks are free to use and built from real-world channel and revenue operations experience. If they saved you time or helped you think through a problem, a small contribution is always appreciated — but never required.</p>
+  </div>
+  <div class="venmo-qr-wrap reveal">
+    <div class="venmo-qr">
+      <span>Venmo QR<br>@jamie-reid</span>
+    </div>
+    <span class="venmo-handle">@jamie-reid on Venmo</span>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">Jamie Reid</div>
+  <p class="footer-copy">© 2026 Jamie Reid. Partner Ecosystem Strategy.</p>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/jamie-reid-862864b/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://drive.google.com/file/d/1lPl1uR8tTQWcrRX1NFSbFTBT4xBaarhA/view?usp=drive_link" target="_blank" rel="noopener">Resume</a>
+    <a href="/#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
