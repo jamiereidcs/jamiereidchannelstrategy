@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why PEG Should Change How You Think About Channel ROI, Part 2 — Thinking Forward Journal</title>
+<meta name="description" content="Part 2 of my notes from Craig Booth's The Partner-Powered Revenue Revolution — the MP3 methodology in full: territory planning, sales plays, 5-4-2 management, ChannelOps dashboards, and the myths that keep channel programs stuck.">
+<link rel="canonical" href="https://jamiereidchannelstrategy.com/journal/partner-powered-peg-part-2.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why PEG Should Change How You Think About Channel ROI, Part 2">
+<meta property="og:description" content="Part 2 of my notes from Craig Booth's The Partner-Powered Revenue Revolution — covering the MP3 methodology, territory revenue planning, sales play construction, and ChannelOps dashboards.">
+<meta property="og:url" content="https://jamiereidchannelstrategy.com/journal/partner-powered-peg-part-2.html">
+<meta property="og:site_name" content="Jamie Reid — Channel Strategy">
+<meta property="og:image" content="https://jamiereidchannelstrategy.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why PEG Should Change How You Think About Channel ROI, Part 2">
+<meta name="twitter:description" content="Part 2 of my notes from Craig Booth's The Partner-Powered Revenue Revolution — covering the MP3 methodology, territory revenue planning, sales play construction, and ChannelOps dashboards.">
+<meta name="twitter:image" content="https://jamiereidchannelstrategy.com/og-image.jpg">
+
+<!-- Additional SEO -->
+<meta name="author" content="Jamie Reid">
+<meta name="robots" content="index, follow">
+
+<!-- Article Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why PEG Should Change How You Think About Channel ROI, Part 2",
+  "description": "Part 2 of my notes from Craig Booth's The Partner-Powered Revenue Revolution — covering the MP3 methodology, territory revenue planning, sales play construction, and ChannelOps dashboards.",
+  "url": "https://jamiereidchannelstrategy.com/journal/partner-powered-peg-part-2.html",
+  "author": {
+    "@type": "Person",
+    "name": "Jamie Reid",
+    "url": "https://jamiereidchannelstrategy.com"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Jamie Reid"
+  }
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #141414;
+    --warm-dark: #1a1a1a;
+    --forest-deep: #1b3a2e;
+    --forest-mid: #46624c;
+    --sage: #687764;
+    --grey-green: #a1aca6;
+    --white: #bebfb9;
+    --line: rgba(70,98,76,0.35);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; cursor: none; }
+
+  .cursor { position: fixed; width: 10px; height: 10px; background: var(--forest-mid); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); }
+  .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--sage); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all 0.15s ease; opacity: 0.6; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 28px 60px; }
+  nav::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(20,20,20,0.97), transparent); pointer-events: none; }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 4px; color: var(--white); position: relative; z-index: 1; text-decoration: none; }
+  .nav-links { display: flex; gap: 40px; list-style: none; position: relative; z-index: 1; }
+  .nav-links a { color: var(--white); text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--grey-green); }
+
+  .post-hero {
+    padding: 160px 60px 80px;
+    max-width: 860px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .post-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sage);
+    text-decoration: none;
+    margin-bottom: 48px;
+    transition: color 0.3s;
+  }
+  .post-back:hover { color: var(--white); }
+  .post-back::before { content: '←'; }
+
+  .post-category {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    margin-bottom: 20px;
+  }
+
+  .post-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+
+  .post-excerpt {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--grey-green);
+    margin-bottom: 36px;
+    max-width: 680px;
+  }
+
+  .post-meta {
+    display: flex;
+    gap: 32px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sage);
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+
+  .post-body {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 80px;
+    padding: 80px 60px 120px;
+    align-items: start;
+  }
+
+  .post-content {
+    max-width: 680px;
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--grey-green);
+  }
+
+  .post-content p { margin-bottom: 28px; }
+
+  .post-content h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
+    color: var(--white);
+    margin: 52px 0 20px;
+    line-height: 1.2;
+  }
+
+  .post-content h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    margin: 36px 0 14px;
+  }
+
+  .post-content strong { color: var(--white); font-weight: 500; }
+  .post-content em { font-style: italic; color: var(--grey-green); }
+
+  .post-content hr {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 48px 0;
+  }
+
+  .post-content a {
+    color: var(--forest-mid);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.3s;
+  }
+  .post-content a:hover { color: var(--grey-green); }
+
+  .post-content ul, .post-content ol {
+    padding-left: 24px;
+    margin-bottom: 28px;
+  }
+  .post-content li { margin-bottom: 10px; }
+
+  .book-callout {
+    background: var(--warm-dark);
+    border-left: 3px solid var(--forest-mid);
+    padding: 24px 28px;
+    margin: 40px 0;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--grey-green);
+    line-height: 1.8;
+  }
+  .book-callout cite {
+    display: block;
+    margin-top: 12px;
+    font-size: 11px;
+    font-style: normal;
+    letter-spacing: 1px;
+    color: var(--forest-mid);
+  }
+
+  .post-sidebar { position: sticky; top: 100px; }
+
+  .sidebar-block {
+    background: var(--warm-dark);
+    padding: 32px;
+    border: 1px solid var(--line);
+    margin-bottom: 24px;
+  }
+
+  .sidebar-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    margin-bottom: 16px;
+  }
+
+  .sidebar-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .sidebar-bio {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--sage);
+    margin-bottom: 20px;
+  }
+
+  .sidebar-link {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    text-decoration: none;
+    border: 1px solid var(--forest-mid);
+    padding: 8px 16px;
+    transition: all 0.3s;
+    width: 100%;
+    text-align: center;
+  }
+  .sidebar-link:hover { background: var(--forest-deep); color: var(--white); }
+
+  .sidebar-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    border: 1px solid rgba(70,98,76,0.35);
+    padding: 5px 10px;
+    margin: 0 4px 8px 0;
+  }
+
+  footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--grey-green); }
+  .footer-copy { font-size: 11px; color: var(--sage); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--sage); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--white); }
+
+  @media (max-width: 768px) {
+    #cursor, #cursorRing { display: none; }
+    * { cursor: auto !important; }
+    nav { padding: 20px 24px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 10px; letter-spacing: 1px; }
+    .post-hero { padding: 120px 24px 60px; }
+    .post-body { grid-template-columns: 1fr; padding: 60px 24px 80px; gap: 48px; }
+    .post-sidebar { position: static; }
+    footer { flex-direction: column; gap: 16px; padding: 32px 24px; text-align: center; }
+    .footer-links { gap: 20px; }
+  }
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LL3TBPZYFN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LL3TBPZYFN');
+</script>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="/index.html" class="nav-logo">Jamie Reid</a>
+  <ul class="nav-links">
+    <li><a href="/index.html#about">About</a></li>
+    <li><a href="/index.html">Work</a></li>
+    <li><a href="/journal/index.html" class="active">Thinking Forward Journal</a></li>
+    <li><a href="/index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="post-hero">
+  <a href="/journal/index.html" class="post-back">Back to Journal</a>
+  <p class="post-category">Strategy</p>
+  <h1 class="post-title">Why PEG Should Change How You Think About Channel ROI — Part 2</h1>
+  <p class="post-excerpt">I finished the book. Part 1 covered the diagnosis: why most partner programs are built around program management rather than demand creation. Part 2 is where Booth gets into the machinery — territory revenue planning, MP3, the 5-4-2 management principle, ChannelOps dashboards, and the four myths keeping most channel programs stuck.</p>
+  <div class="post-meta">
+    <span>Jamie Reid</span>
+    <span>March 2026</span>
+    <span>18 min read</span>
+  </div>
+</div>
+
+<div class="post-body">
+  <article class="post-content">
+
+    <p>If you haven't read <a href="/journal/partner-powered-peg.html">Part 1</a>, the short version is this: Craig Booth's argument is that most partner programs are built to manage partner relationships rather than to create demand. The program is necessary but not sufficient. What's missing is a structured GTM motion that actually changes how partner sellers behave. Part 2 is where the book builds that out in detail.</p>
+
+    <p>A lot of this aligns with things I've believed in practice for a long time. But Booth puts a level of structural rigor around it that I found genuinely useful. These are the ideas I'm taking into my own work.</p>
+
+    <h2>The Planning Has to Start With Real Numbers</h2>
+
+    <p>How much channel planning still runs on gut feel is something that kept hitting me throughout these chapters. We set revenue targets, divide them by partner count, and hope the math works out. Booth's approach starts somewhere different: with the actual data inputs needed to build a credible plan.</p>
+
+    <p>The Territory Revenue Roadmap model requires a handful of things going in: your revenue target, how many active sellers each CAM manages per quarter, average active sellers per partner, deal size, sales cycle length, targeted engagement rates (meetings as a percentage of accounts touched), conversion rates from meeting to quoted opportunity, and close rates.</p>
+
+    <p>None of that is exotic. But the discipline of actually having those numbers — clean, agreed-upon, consistently defined across the program — is rarer than it should be. Most channel teams I've worked with have a revenue target and a rough sense of pipeline. The middle variables are fuzzy. Engagement rates vary by rep. Conversion definitions differ by partner. Deal sizes get averaged across wildly different deal types.</p>
+
+    <p>What the Territory Revenue Roadmap forces is clarity about the relationship between activities and outcomes. If you need $4M in net new business, you can work backwards to the number of partners needed, the seller units required, and the outreaches that have to happen to generate enough pipeline. In Booth's example: 15 partners, 218 seller units, 653 outreaches. That level of specificity makes conversations with leadership a lot cleaner. It also makes it much harder to have a productive conversation about underperformance when you're not managing to those variables in the first place.</p>
+
+    <div class="book-callout">
+      "Like any data-driven model, the quality of the inputs will determine the accuracy of the output."
+      <cite>— Craig Booth, The Partner-Powered Revenue Revolution</cite>
+    </div>
+
+    <p>Revenue Roadmap Reports are designed to be a foundational baseline — rooted in data-driven expectations rather than top-down quota math. That framing matters, because it shifts the territory planning conversation from allocation to calibration.</p>
+
+    <h2>Target Account Planning: Revenue With a Name on It</h2>
+
+    <p>The Account Mapping piece takes the territory-level math down to the partner level. Rather than assigning a revenue number to a partner and hoping they figure it out, the Partner Revenue Roadmap Account Mapping process starts with accounts: specifically, accounts where relationships exist or can be developed.</p>
+
+    <p>The inputs are a revenue target for the period, the number of personas being targeted, solution sales metrics, market development metrics, and MDF cost per lead. From there, the model calculates how many target accounts, seller units, and closed deals are needed to hit the number — along with the specific pipeline math (meetings, opportunities, outreaches) broken out by solution.</p>
+
+    <p>This changes the conversation between CAMs and partners. Instead of "here's your quota," you're working through "here are the 27 accounts we think you can work, here's what we need to generate from them, and here's the solution mix that gets us there." That's a planning conversation. It's also a more honest one, because it makes the assumptions visible rather than leaving them implicit in a revenue target nobody fully trusts.</p>
+
+    <p>One structural point worth noting: Booth recommends focusing on one sales play per seller per quarter, cycled across quarters. The full target account mapping and account assignment process runs on a 90-day cycle. You enable sellers in the first four weeks of each quarter, but enablement and account mapping stay as ongoing monthly activities. Building up 40 active sellers takes time — you'll likely fall short in the first two or three quarters. But over time, you build a stable of reliable sellers who consistently produce. That compounding effect is the point.</p>
+
+    <h2>Market Development: Actually Connecting Spend to Outcomes</h2>
+
+    <p>The MDF chapter is one I've been thinking about since I read it. Most MDF programs I've worked with operate as a spend allocation exercise: partners get budget, they spend it on events or campaigns, and the connection between that spend and actual pipeline is vague at best.</p>
+
+    <p>Booth ties MDF directly to cost per lead by channel: outbound, events, and inbound. In the example from the book, outbound generates 2.2 opportunities at a total cost of roughly $2,158, events generate 1.1 at about $1,079, and inbound generates 0.4 at roughly $360. With a 50% MDF policy, you're funding half of each. The model tells you exactly what you're paying for leads from each source.</p>
+
+    <p>That's a completely different framing than "we have $X in MDF budget to allocate this quarter." It forces a question channel teams should be asking more often: which market development activities are actually generating qualified pipeline, and at what cost? If you're not asking that, you're not optimizing MDF — you're just spending it.</p>
+
+    <p>The outreach metrics breakdown illustrates something worth sitting with: outbound is doing the heavy lifting (539 outreaches vs. 13 events and 18 inbound), but it's also the most resource-intensive per opportunity. Understanding that split, and what it costs, is the starting point for any real conversation about market development investment.</p>
+
+    <h2>MP3: The Four Stages in Practice</h2>
+
+    <p>The MP3 methodology has been building across the whole book, but these chapters are where it comes into full focus. Four stages: Strategy Resourcing, Account Mapping, Define Execution Plan, and Measure Results.</p>
+
+    <p>What I appreciate about it is that it's structured like an operating system for channel GTM, not just a planning template. Each stage has specific inputs and outputs.</p>
+
+    <p><strong>Strategy Resourcing</strong> is about sales plays, solution prioritization, positioning around core customer issues, leveraging partner relationships, and defining the incentive structure. <strong>Account Mapping</strong> defines the target account list, scores accounts against ICP, scores existing relationships, and assigns accounts to sellers. <strong>Define Execution Plan</strong> determines the outreach mix: direct connect, referrals, the 4-3-2-1 prospecting approach, email sequences, call campaigns, social media. <strong>Measure Results</strong> tracks prospecting activity, active partner seller count, conversion rates, and revenue outcomes.</p>
+
+    <p>The transition from planning to behavioral change is genuinely hard to execute — and Booth is honest about that. The methodology doesn't just tell you what accounts to target. It tells partner sellers how to go after those accounts, in what sequence, with what tools. That specificity is what separates a functioning partner GTM motion from a well-intentioned binder that sits in a partner portal and gets opened twice a year.</p>
+
+    <h2>Building Sales Plays That Actually Work</h2>
+
+    <p>The sales play construction framework is detailed. A few principles stood out as genuinely useful to me.</p>
+
+    <p><strong>The buyer's journey has to be the spine.</strong> Booth maps a five-stage process: Discover, Educate, Validate, Close, Launch. Each stage has a clear goal, specific deliverables, and defined exit criteria. Building a sales play without that spine means sellers end up with tactics but no context for where those tactics fit in the buyer's decision process.</p>
+
+    <p><strong>The messaging sequence matters more than any single message.</strong> The three-email outreach structure is a logical progression: an introduction email that defines the problem and core benefit, an objection-handling email that anticipates and addresses pushback, and an offer email with a clear call to action. Each builds on the previous. Most partner enablement I've seen gives sellers one generic template and calls it done. That's not a sequence — it's a one-shot attempt.</p>
+
+    <p><strong>The pitch deck's job is to generate the next meeting, not close the deal.</strong> Three to five slides: here's the problem, here's the outcome our solution enables, here's how it works, here's the next step. The goal is to move the buyer to a validation or demo stage. That distinction shapes how you train partner sellers to use it.</p>
+
+    <p><strong>Partner Impact Scoring</strong> is a tool I'd want built into every CAM's quarterly planning process. Score partners on four criteria — competency, target market reach, program level attainment, and sales priority for your solution — on a 10/5/0 scale. Total the scores, divide by four, and you get a read on where to focus enablement time. High impact is 35-40, favorable is 30, and below that you're working with a low-strength partner relationship that needs a different kind of attention. The same scoring framework works at the individual seller level too.</p>
+
+    <h2>Seven Principles of Effective Enablement Delivery</h2>
+
+    <p>There's a section in the book I didn't expect to find as useful as I did: a framework for how to actually deliver an enablement session. Booth opens with an anecdote about a Channel Manager who kicked off his training with "My product sucks!" — deliberately. The product he was selling had a reputation for consuming vast amounts of power, overheating, and eventually failing. Leading with that defused the audience immediately, took the major objection off the table before it could derail the session, and grabbed everyone's attention at once. That CM knew his audience and understood what they were going to walk in thinking.</p>
+
+    <p>That story is the setup for seven principles that apply to any enablement presentation. I'm paraphrasing from memory here, but the core ideas are worth keeping:</p>
+
+    <p><strong>Know your audience.</strong> What seems important to you may not be what's important to them. Talk to your partner contact beforehand to understand who's attending and what they actually need to get value from the session.</p>
+
+    <p><strong>Frame the presentation.</strong> Tell people upfront how long you need, and stick to it. The average attention span for a presentation is five to ten minutes. The CM in Booth's example kept his content to 20 minutes, which meant setting the agenda in the opening so attendees knew how long they needed to stay engaged.</p>
+
+    <p><strong>Tell them what you're going to tell them.</strong> Define the agenda explicitly. "In the next 30 minutes I'm going to cover why customers are buying this, three unmatched benefits, two use cases that consistently close, and how to make $40K in margin." That sets expectations and gives people a reason to stay focused.</p>
+
+    <p><strong>Explain the payoff.</strong> Opening statements should always address why the audience should care. Communicating what's in it for them keeps people engaged in a way that product overviews rarely do.</p>
+
+    <p><strong>Encourage participation.</strong> Questions are a signal of engagement. Skilled presenters pick up on those cues and adjust in real time — but you also have to manage the flow so questions don't derail the session.</p>
+
+    <p><strong>Enable the strategy, not just the product.</strong> The balance between product knowledge and sales strategy is something most enablement sessions get wrong. Too much product, not enough "here's how to actually sell it." The CM's pitch was about use cases, selling benefits, and making it easier for the partner to present the solution — not a feature walkthrough.</p>
+
+    <p><strong>Always end with a call to action.</strong> Booth references a statistic that 64% of salespeople never ask for the business. Enablement presentations have the same problem — they build up to nothing. The presentation is the setup for a specific next step. Define it. Include it. And make the ask specific: not "let us know if you have any questions" but something more like "would you give me 10 minutes of your time, three days a week for three weeks, if I could show you how to create and close a $40K margin deal?" Sell what's in it for them, not what's in it for you.</p>
+
+    <h2>New Channel Math</h2>
+
+    <p>The New Channel Math model ties a lot of this together in a way that I think is practical and underused. It starts with active sellers, assigns each four target accounts, and builds from there.</p>
+
+    <p>40 active sellers covering 4 target accounts each gives you 160 accounts in coverage. Apply a market-stage engagement rate (18% for a new market, 22% for growth, 10% for mature, 5% for decline) and you get a projected meeting count. Apply a 30% conversion rate from meeting to deal registration and multiply by average deal size to get your new funnel value. In the example: 22% engagement on 160 accounts = 35 meetings, 30% conversion = 10.5 deal registrations, at $150K average = $1.575M new funnel value.</p>
+
+    <p>The market dynamics adjustment is what makes this more honest than a flat engagement rate model. If you're going into a new market where customers are actively evaluating options, your engagement rate is going to look different than if you're working a mature market where everyone already has a platform in place. Applying one number to both situations produces a forecast that's either too optimistic or too conservative. Tuning the model to market stage makes the output meaningfully more credible.</p>
+
+    <h2>The 5-4-2 Management Principle</h2>
+
+    <p>This is one of the more operationally specific ideas in the book, and it resonated with me because it addresses something that most channel management guidance completely ignores: how do you actually manage the day-to-day rhythm of active seller engagement?</p>
+
+    <p>The 5-4-2 model works like this: a CAM focuses on a defined set of active sellers, makes four daily connections (via email or direct call) to monitor progress and address prospecting challenges, and requires at least two direct conversations per month with each active seller. Those conversations are specifically about capturing 4-3-2-1 prospecting progress — helping sellers work through issues with engagements, messaging, meeting preparation, or deal development.</p>
+
+    <p>The connection between daily rhythm and data quality is something worth flagging. If sellers become unresponsive, the right response is to cycle them out and bring in new sellers. The primary job of every partner manager is to cultivate active sellers — not to keep the same roster indefinitely.</p>
+
+    <p>Weekly tracking is managed through a simple color-coded reporting dashboard covering four metrics against goals: Active Sellers, Account Engagements, Deal Registrations, and Quarterly Revenue. In the example from the book, the goals are 40 active sellers, 160 account engagements, 30 deal registrations, and $1M in quarterly revenue. The actual numbers (26 sellers at 65%, 102 accounts at 46%, 12 registrations at 40%, $297K revenue at 30%) tell an immediate story about where execution is breaking down and where to intervene. That kind of visibility is a significant departure from how most channel management conversations happen today.</p>
+
+    <p>The benefits Booth outlines for this approach are what you'd expect: better resource allocation from focusing on a defined set of sellers, enhanced accountability through regular structured check-ins, scalability as territories can be adjusted based on active seller productivity, and improved sales outcomes from the combination of targeted account focus and consistent engagement. The less obvious benefit is that this process creates a rhythm. It makes the work of managing partner sellers feel like a structured operating cadence rather than a series of reactive check-ins.</p>
+
+    <h2>ChannelOps Dashboards: Seeing Inside the Engine</h2>
+
+    <p>Most channel dashboards show partner-level aggregates. Revenue by partner. Pipeline by partner. Deal registrations by partner. Those numbers tell you which partnerships are delivering in aggregate, but they don't tell you why performance looks the way it does — or what you'd need to change to move it.</p>
+
+    <p>The MP3 ChannelOps dashboard approach drills into: active partner sellers broken out by partner and by CAM, account coverage details, prospecting activity at the role and account level, outreach outcomes by type, sales play effectiveness, conversion rates from meeting to funnel, deal size and close rate trends, and individual partner and CAM performance over time.</p>
+
+    <p>The practical value of that level of data is that you can actually diagnose problems. If a partner's pipeline is down, you can tell whether the issue is seller activation, account coverage, engagement rate, or conversion. Each diagnosis points to a different intervention. Compare that to "your pipeline is down, what's going on?" — which describes most of the partner QBR conversations I've been in.</p>
+
+    <div class="book-callout">
+      "Incorporating strategy execution metrics into contemporary channel analytics introduces precise measurement and accountability into the target account mapping process."
+      <cite>— Craig Booth, The Partner-Powered Revenue Revolution</cite>
+    </div>
+
+    <p>There's also a point Booth makes about paying for data that I think is underappreciated. Build a margin incentive into deal registration in exchange for detailed 4-3-2-1 prospecting activity data. Partners submit what they're required to submit. If you want richer data, you need to give them a reason to provide it. Compensating for that data submission changes the behavior — and it turns data entry into something that feels like a partnership rather than an audit.</p>
+
+    <h2>Are Ecosystems the Answer?</h2>
+
+    <p>The final chapter of the book addresses a question that's become hard to avoid in partner circles: is the ecosystem model the solution to the channel's revenue creation problem?</p>
+
+    <p>Booth's answer is nuanced, which I appreciate. He's genuinely supportive of ecosystems — the co-innovation model, partners contributing complementary expertise, the broader coverage and community-centric approach are all real advantages. But ecosystems still have the same core problem as traditional models: opportunistic sales behavior. Still reactive. Still no structured demand creation. Still difficult to get account alignment across multiple partners in a coordinated way.</p>
+
+    <p>The pros and cons table he presents lays this out clearly. Fulfillment models have low investment cost and fast time to market, but limited sales process control and no execution visibility. Ecosystem and platform models add flexibility, co-innovation, and broader coverage, but still rely on unstructured GTM practices. Structured Partner Performance (the MP3 model) improves revenue and channel ROI, creates active sellers, structures sales creation, and provides execution visibility — but requires investment in tools and training and demands a real behavioral shift.</p>
+
+    <p>The point isn't that ecosystems are wrong. It's that the next wave of ecosystem innovation has to include a structured performance element. The reach and co-innovation power of ecosystems, combined with the structured methodology of MP3, is where the real opportunity is.</p>
+
+    <h2>Is MP3 Just for Resellers?</h2>
+
+    <p>Worth addressing directly, because it's a natural question. Structured performance applies across partner types. Referral partners benefit from sales plays that equip them with compelling messaging and target account mapping capability. MSPs benefit from co-sell strategies, account mapping, and co-branded plays that help them generate new sales rather than just renew existing clients. Influence partners get structured and targeted messaging to support their social outreach. Services partners get the same sales play framework applied to upsell motions within their existing customer base.</p>
+
+    <p>The underlying principle — measuring inputs, production, and outputs, and clearly defining what you want each partner type to do, how to do it, and when — applies universally. The specific execution looks different for each partner type. The model is the same.</p>
+
+    <h2>Is Technology Enough?</h2>
+
+    <p>There's a section in the FAQ chapter that I found validating because it names something I've seen cause real problems in channel programs: what Booth calls the "Frankenstein" tech stack. A collection of point products, each solving a specific problem, that don't integrate well and don't share a unifying methodology. The stack grows over time as new tools get added to address new gaps, and the result is a channel technology environment that creates inefficiency rather than eliminating it.</p>
+
+    <p>Booth's view is that a channel tech stack needs to integrate cleanly with the three core systems every company runs on: ERP, CRM, and Martech. Without that foundation, the data is fragmented, the workflow is disjointed, and the analytics are unreliable.</p>
+
+    <p>But the more important point is that technology alone doesn't solve the underlying problem. Generative AI in the channel is promising, but purchasing decisions are still based on trust. The combination of structured performance and strong, leveraged relationships is what drives results over time. Technology can accelerate the model. It can't replace it.</p>
+
+    <h2>The Real Challenges With MP3</h2>
+
+    <p>Booth doesn't skip the challenges, and I think that makes the book more useful. Here's how he frames the honest difficulty of implementing this model:</p>
+
+    <p><strong>It requires a fundamental shift in partnering approach.</strong> Years of operating with a program-centric model create muscle memory. MP3 asks partner leaders to shift their focus from managing programs to building active seller communities and running prospecting processes. That's a different job description, and it takes time to rewire.</p>
+
+    <p><strong>It changes the role of PAMs.</strong> Partner Account Managers under this model are responsible for developing and managing active sellers and administering a target account mapping process. That's a different skill set than what most PAMs were hired and trained for. Some will adapt. Some will need different support.</p>
+
+    <p><strong>It depends on clean data.</strong> The whole model runs on robust data collection — to build revenue roadmaps, manage the acceleration process, and run the ChannelOps dashboards that make execution visible. Not every partner will be willing or able to provide that data without structured incentives to do so.</p>
+
+    <p><strong>It requires new tools and process integration.</strong> Implementing MP3 means introducing new workflows that have to fit into existing systems. The initial setup needs training and fine-tuning. Booth's note here is that once companies are operating inside the MP3 process, many job functions actually become more streamlined — but getting there requires upfront investment.</p>
+
+    <p>His overall position is that these challenges are real and solvable, and the benefits outweigh them. I'd add: knowing what the challenges are going in is half the battle. Plenty of channel transformation efforts stall not because the model is wrong but because the change management wasn't planned for.</p>
+
+    <h2>Four Myths Worth Naming</h2>
+
+    <p>The book closes with four common partnering myths that Booth argues are the biggest obstacles to adopting structured performance models. I found all four uncomfortable in the right way.</p>
+
+    <p><strong>"Build it and they will come."</strong> The belief that establishing a partner program, enlisting partners, and educating them on the product will automatically generate revenue. It won't. A good partnering model has to account for market awareness, consumer needs, competition, customer engagement, and evolving market dynamics. Building the program is table stakes. What happens after the program is what drives results.</p>
+
+    <p><strong>"What I did in the past will work in the future."</strong> The channel landscape changes. Consumption models change. Buyer behavior changes. Replicating past strategies in a different environment produces different results. Revenue leaders who rely on previous successes without adapting end up managing programs that worked five years ago in a market that no longer exists.</p>
+
+    <p><strong>"Activity equals results."</strong> This one hits close to home. The traditional model focuses on compliance and forecasting — deal registrations submitted, MDF spent, events attended. Those activities don't translate directly to outcomes. What actually matters is the number of active partner sellers, the accounts they're covering, their prospecting activity, and their actual sales achievements. Shifting to those metrics is what makes it possible to demonstrate channel value to company leadership in terms that connect to revenue.</p>
+
+    <p><strong>"People care about partner programs."</strong> Booth is blunt here: the intricacies of partner program design often go completely unnoticed by the people programs are designed to serve. What partners actually care about is ease of sale and market potential. What customers care about is whether your solutions solve their problems. What your company cares about is revenue generation and sales performance. Designing a world-class partner program that doesn't connect those three things is just overhead.</p>
+
+    <p>The through line in all four myths is that they let channel leaders stay focused on inputs — the program mechanics — rather than outcomes. Structured performance models force the shift in the other direction.</p>
+
+    <h2>What MP3 Actually Solves</h2>
+
+    <p>Booth is direct about what the model is designed to fix. Program-centric channel models have five persistent problems, and he maps each of them to a specific element of MP3.</p>
+
+    <p><strong>Revenue Creation.</strong> MP3 transforms passive account managers into active sellers, which revitalizes the sales process at the individual level rather than hoping aggregate partner revenue materializes.</p>
+
+    <p><strong>Relevance.</strong> MP3 equips partner sellers with an easy-to-execute process, making it both feasible and profitable for partners to invest in proactive prospecting — which in turn increases the vendor's relevance within the partner ecosystem. Partners prioritize the vendors who make it easiest to generate deals. A structured methodology with real incentives changes that calculus.</p>
+
+    <p><strong>Enablement.</strong> MP3 addresses the knowledge retention gap by offering straightforward selling processes that simplify how partners engage with the sales motion. Most enablement creates knowledge that decays quickly. A step-by-step process that sellers reference repeatedly compounds rather than fades.</p>
+
+    <p><strong>Execution.</strong> The structured coverage and targeted account mapping framework directly addresses the execution challenges that come with passive sellers. Sellers who don't know exactly which accounts to prioritize and what to do when they get there default to opportunistic behavior. MP3 removes that ambiguity.</p>
+
+    <p><strong>ROI.</strong> By focusing on activating existing sellers rather than constantly recruiting new partners, MP3 reduces channel costs. The model also improves win rates and reduces the wasted spend that comes from partners who are technically enrolled in your program but not actually selling.</p>
+
+    <p>Monitoring prospecting and account coverage trends are the crucial metrics for managing pipeline creation through this model. Not program enrollment numbers. Not MDF utilization. Active sellers and the accounts they're covering.</p>
+
+    <h2>The MP3 Production Line: How It All Connects</h2>
+
+    <p>The production line framing is the right mental model for what Booth is describing. The five-step loop works like this: define revenue goals and calculate the active seller inputs and engagements needed for each territory and strategic partner; build Revenue Roadmap Plans identifying those active sellers, target accounts, timeframes, and activities; build your account coverage plan by territory, ICP, and relationship score, then develop your sales plays and enable sellers to execute; performance-manage the prospecting process by capturing active seller account engagement activity and defining KPIs to course correct; then co-sell and develop new pipeline into closed opportunities.</p>
+
+    <p>The key word is "loop." This isn't a one-time planning exercise — it's a continuous production process with defined inputs, outputs, and feedback mechanisms at each stage. That's what makes it different from an annual channel planning session.</p>
+
+    <h2>Is Your Model Money?</h2>
+
+    <p>The book includes a self-assessment I found genuinely useful as a diagnostic tool. It's 11 yes/no questions designed to score how structured your current channel GTM model actually is. Questions include whether territory and partner revenue plans incorporate sales metrics, timeframes, and target accounts; whether sales plays are developed by solution to streamline selling efforts; whether accounts are targeted and mapped with partners as part of a structured territory plan; whether partner sellers are provided enhanced incentives for prospecting; whether you use a structured prospecting process like 4-3-2-1; whether account engagement and prospecting activity is tracked and attributed to partner-target account outreach; and whether Partner Account Managers are measured on creating and scaling active sellers.</p>
+
+    <p>The scoring is straightforward. Eight or more yes answers and your model is highly optimized. Six to seven and you're on a good path with room to improve. Four to five and you've started to adopt structured performance elements but significant gaps remain. Fewer than three yes answers and the model is likely costing more than it's delivering.</p>
+
+    <p>I'll be honest: most channel programs I've worked with or observed would land in that 4-5 range. Not because the leaders aren't capable, but because the program-centric model is what gets built when there's no structured alternative to build toward.</p>
+
+    <h2>How to Start</h2>
+
+    <p>For those sold on the model, Booth's implementation path is practical and staged.</p>
+
+    <p>Start by assessing your current state against those 11 questions. Be honest about where the gaps are. The assessment identifies which elements of structured performance are already present and which need to be built.</p>
+
+    <p>Then embrace and train — not just your partner sellers, but your internal team. The ISAM and MP3 models require buy-in across the organization. Sales, support, operations all need to understand how these changes affect their roles. Training can't just be a partner-facing exercise.</p>
+
+    <p>Execute with pilots. Booth's specific recommendation is to start with three partner account managers and territories to trial the process. That's small enough to manage the risk, collect real data, and refine the approach before scaling. Begin with pilot programs to manage risk and allow for adjustments before a full-scale rollout.</p>
+
+    <p>Monitor, measure, and motivate continuously. Establish clear metrics for success, run regular reviews, analyze what's not working, and recognize the teams delivering results. The rhythm of the 5-4-2 management principle applies here — this isn't quarterly check-in territory, it's weekly tracking against goals.</p>
+
+    <p>Finally, invest in technology that fits the model. Booth's framing on this is useful: don't buy tools to solve point problems. Buy tools that integrate well with your ERP, CRM, and Martech stack and that enhance your team's ability to execute the structured performance model specifically.</p>
+
+    <p>On that note, the book references several tools that are part of the Channel Force ecosystem. Planning IQ handles revenue planning through 14 data inputs, generating territory and partner-level roadmaps that model and predict revenue performance. It moves away from what Booth calls the "Partner and Pray" model toward a "Plan and Perform" approach. Performance IQ captures and displays data on partner and account-level prospecting activities, attributing the value of partner sellers during the sales development phase and ensuring performance metrics align with the benchmarks set in the planning roadmap. Splashmetrics introduces an intelligent buyer's journey platform that tailors solution journeys by persona, guiding economic buyers through content designed to educate, nurture, and compel a purchase decision, with all interactions tracked, scored, and summarized in a sales report. Ringdrop.ai integrates AI Virtual SDR capabilities that handle prospect research, cold calling, and initial lead qualification — removing the most labor-intensive parts of the outbound prospecting process.</p>
+
+    <p>I don't have direct experience with these specific tools, but the design logic behind them maps cleanly to the model: revenue planning feeds the production line, performance intelligence monitors it, digital selling tools support partner outreach at scale, and AI SDR capabilities reduce the friction of getting to that first meeting. Whether you use this particular stack or something else, those four functional needs are real requirements for running MP3 at scale.</p>
+
+    <hr>
+
+    <h2>What I'm Taking Away</h2>
+
+    <p>I finished this book with a clearer picture of what the next generation of channel programs actually needs to look like. Not better program management. Not more partners. Not a more sophisticated MDF structure. A production line — with the controls, measurement, and accountability of a factory setting. That's Booth's framing, and I think it's right.</p>
+
+    <p>A few specific things I'm taking into my own work. Territory and account-level revenue roadmaps as the starting point for every partner planning conversation, not a post-quarter reporting exercise. Partner Impact Scoring as a standard CAM planning tool — not to rank partners but to allocate enablement time with intention. The 5-4-2 management rhythm as the operating cadence for active seller engagement, with weekly reporting that tracks against goals at the activity level. Sales plays built from the buyer's journey outward, with sequenced messaging and a storyboard for each stage. And ChannelOps dashboards that show seller-level execution, not just partner-level aggregates.</p>
+
+    <p>If you run a channel program and you can't answer these six questions, you have gaps worth closing: Do you know how many active sellers you have and what accounts they're covering? Can you specify your engagement rates, conversion rates, and close rates by solution? Can you model revenue based on active sellers and account coverage? If the answer to any of those is "not really," that's where to start.</p>
+
+    <p>None of this is simple to build. But the direction is clear enough. Partner programs that get structured performance right will have a durable advantage over the ones still managing to top-line revenue reports and annual business reviews. That gap is only going to widen from here.</p>
+
+    <hr>
+
+    <div style="background:var(--warm-dark);border:1px solid var(--line);padding:28px 32px;margin-top:48px;">
+      <p style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:12px;">Part 1 in This Series</p>
+      <p style="margin-bottom:0;color:var(--grey-green);font-size:15px;">Part 1 covers PEG, the case for standardization, the Partner Sales Efficiency metric, Solution Strength scoring, and Booth's five-layer enablement model. <a href="/journal/partner-powered-peg.html" style="color:var(--forest-mid);">Read Part 1.</a></p>
+    </div>
+
+  </article>
+
+
+  <!-- Subscribe -->
+  <div style="background:var(--warm-dark);border:1px solid var(--line);padding:40px;margin-top:60px;">
+    <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:12px;">Stay in the loop</p>
+    <h3 style="font-family:'DM Serif Display',serif;font-size:24px;color:var(--white);margin-bottom:12px;">New posts, straight to your inbox.</h3>
+    <p style="font-size:14px;color:var(--sage);line-height:1.7;margin-bottom:28px;">No cadence commitments. Just thinking worth sharing when it's ready.</p>
+    <form name="subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html"
+      style="display:flex;gap:12px;flex-wrap:wrap;">
+      <input type="hidden" name="form-name" value="subscribe">
+      <p style="display:none;"><input name="bot-field"></p>
+      <input type="email" name="email" placeholder="your@email.com" required
+        style="flex:1;min-width:200px;background:var(--black);border:1px solid var(--line);color:var(--white);padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;">
+      <button type="submit"
+        style="background:var(--forest-deep);border:1px solid var(--forest-mid);color:var(--white);padding:12px 28px;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;white-space:nowrap;">
+        Subscribe
+      </button>
+    </form>
+  </div>
+
+  <!-- Comments -->
+  <div style="margin-top:60px;padding-top:48px;border-top:1px solid var(--line);">
+    <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:32px;">Discussion</p>
+    <script src="https://giscus.app/client.js"
+        data-repo="jamiereidcs/jamiereidchannelstrategy"
+        data-repo-id="R_kgDORXLolQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDORXLolc4C3IES"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark_dimmed"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+    </script>
+  </div>
+
+  <aside class="post-sidebar">
+    <div class="sidebar-block">
+      <p class="sidebar-label">Written by</p>
+      <h3 class="sidebar-name">Jamie Reid</h3>
+      <p class="sidebar-bio">Partner ecosystem strategy leader. Building the programs of today, designing the channel of tomorrow.</p>
+      <a href="/index.html#contact" class="sidebar-link">Get in touch</a>
+    </div>
+    <div class="sidebar-block">
+      <p class="sidebar-label">Part 1</p>
+      <p style="font-size:12px;color:var(--sage);line-height:1.7;margin-bottom:16px;">PEG, Partner Sales Efficiency, Solution Strength, and the five-layer enablement model.</p>
+      <a href="/journal/partner-powered-peg.html" class="sidebar-link">Read Part 1</a>
+    </div>
+    <div class="sidebar-block">
+      <p class="sidebar-label">Reading</p>
+      <p style="font-size:12px;color:var(--sage);line-height:1.7;">The Partner-Powered Revenue Revolution<br><span style="color:var(--forest-mid);">Craig Booth</span></p>
+    </div>
+    <div class="sidebar-block">
+      <p class="sidebar-label">Tags</p>
+      <span class="sidebar-tag">Strategy</span>
+      <span class="sidebar-tag">RevOps</span>
+      <span class="sidebar-tag">Channel ROI</span>
+      <span class="sidebar-tag">Operations</span>
+      <span class="sidebar-tag">PEG</span>
+      <span class="sidebar-tag">MP3</span>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-logo">Jamie Reid</div>
+  <p class="footer-copy">© 2026 Jamie Reid. Partner Ecosystem Strategy.</p>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/jamie-reid-862864b/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="/journal/index.html">Journal</a>
+    <a href="/index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+  function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+  animRing();
+</script>
+</body>
+</html>
