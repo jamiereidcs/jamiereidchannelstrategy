@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Real AI Unlock for Partnerships Isn't a Better Prompt — It's Context — Thinking Forward Journal</title>
+<meta name="description" content="Most partnership teams have adopted AI but stalled at text generation. The teams pulling ahead aren't writing better prompts — they're building shared context infrastructure.">
+<link rel="canonical" href="https://jamiereidchannelstrategy.com/journal/ai-context.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Real AI Unlock for Partnerships Isn't a Better Prompt — It's Context">
+<meta property="og:description" content="Most partnership teams have adopted AI but stalled at text generation. The teams pulling ahead aren't writing better prompts — they're building shared context infrastructure.">
+<meta property="og:url" content="https://jamiereidchannelstrategy.com/journal/ai-context.html">
+<meta property="og:site_name" content="Jamie Reid — Channel Strategy">
+<meta property="og:image" content="https://jamiereidchannelstrategy.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Real AI Unlock for Partnerships Isn't a Better Prompt — It's Context">
+<meta name="twitter:description" content="Most partnership teams have adopted AI but stalled at text generation. The teams pulling ahead aren't writing better prompts — they're building shared context infrastructure.">
+<meta name="twitter:image" content="https://jamiereidchannelstrategy.com/og-image.jpg">
+
+<!-- Additional SEO -->
+<meta name="author" content="Jamie Reid">
+<meta name="robots" content="index, follow">
+
+<!-- Article Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Real AI Unlock for Partnerships Isn't a Better Prompt — It's Context",
+  "description": "Most partnership teams have adopted AI but stalled at text generation. The teams pulling ahead aren't writing better prompts — they're building shared context infrastructure.",
+  "url": "https://jamiereidchannelstrategy.com/journal/ai-context.html",
+  "author": {
+    "@type": "Person",
+    "name": "Jamie Reid",
+    "url": "https://jamiereidchannelstrategy.com"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Jamie Reid"
+  }
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #141414;
+    --warm-dark: #1a1a1a;
+    --forest-deep: #1b3a2e;
+    --forest-mid: #46624c;
+    --sage: #687764;
+    --grey-green: #a1aca6;
+    --white: #bebfb9;
+    --line: rgba(70,98,76,0.35);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; cursor: none; }
+
+  .cursor { position: fixed; width: 10px; height: 10px; background: var(--forest-mid); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); }
+  .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--sage); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all 0.15s ease; opacity: 0.6; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 28px 60px; }
+  nav::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(20,20,20,0.97), transparent); pointer-events: none; }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 4px; color: var(--white); position: relative; z-index: 1; text-decoration: none; }
+  .nav-links { display: flex; gap: 40px; list-style: none; position: relative; z-index: 1; }
+  .nav-links a { color: var(--sage); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--white); }
+
+  /* Post hero */
+  .post-hero {
+    padding: 160px 60px 80px;
+    max-width: 860px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .post-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sage);
+    text-decoration: none;
+    margin-bottom: 48px;
+    transition: color 0.3s;
+  }
+  .post-back:hover { color: var(--white); }
+  .post-back::before { content: '←'; }
+
+  .post-category {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    margin-bottom: 20px;
+  }
+
+  .post-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+
+  .post-excerpt {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--grey-green);
+    margin-bottom: 36px;
+    max-width: 680px;
+  }
+
+  .post-meta {
+    display: flex;
+    gap: 32px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sage);
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* Post body */
+  .post-body {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 80px;
+    padding: 80px 60px 120px;
+    align-items: start;
+  }
+
+  .post-content {
+    max-width: 680px;
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--grey-green);
+  }
+
+  .post-content p { margin-bottom: 28px; }
+
+  .post-content h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
+    color: var(--white);
+    margin: 52px 0 20px;
+    line-height: 1.2;
+  }
+
+  .post-content h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    margin: 36px 0 14px;
+  }
+
+  .post-content strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .post-content em {
+    font-style: italic;
+    color: var(--grey-green);
+  }
+
+  .post-content hr {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 48px 0;
+  }
+
+  .post-content a {
+    color: var(--forest-mid);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.3s;
+  }
+  .post-content a:hover { color: var(--grey-green); }
+
+  .post-content ul, .post-content ol {
+    padding-left: 24px;
+    margin-bottom: 28px;
+  }
+  .post-content li { margin-bottom: 8px; }
+
+  /* Sidebar */
+  .post-sidebar {
+    position: sticky;
+    top: 100px;
+  }
+
+  .sidebar-block {
+    background: var(--warm-dark);
+    padding: 32px;
+    border: 1px solid var(--line);
+    margin-bottom: 24px;
+  }
+
+  .sidebar-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    margin-bottom: 16px;
+  }
+
+  .sidebar-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .sidebar-bio {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--sage);
+    margin-bottom: 20px;
+  }
+
+  .sidebar-link {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    text-decoration: none;
+    border: 1px solid var(--forest-mid);
+    padding: 8px 16px;
+    transition: all 0.3s;
+    width: 100%;
+    text-align: center;
+  }
+  .sidebar-link:hover { background: var(--forest-deep); color: var(--white); }
+
+  .sidebar-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    border: 1px solid rgba(70,98,76,0.35);
+    padding: 5px 10px;
+    margin: 0 4px 8px 0;
+  }
+
+  footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--grey-green); }
+  .footer-copy { font-size: 11px; color: var(--sage); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--sage); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--white); }
+
+  @media (max-width: 768px) {
+    #cursor, #cursorRing { display: none; }
+    * { cursor: auto !important; }
+    nav { padding: 20px 24px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 10px; letter-spacing: 1px; }
+    .post-hero { padding: 100px 24px 48px; }
+    .post-body { grid-template-columns: 1fr; padding: 48px 24px 80px; gap: 48px; }
+    .post-sidebar { position: static; }
+    footer { flex-direction: column; gap: 16px; padding: 32px 24px; text-align: center; }
+    .footer-links { gap: 20px; }
+  }
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LL3TBPZYFN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LL3TBPZYFN');
+</script>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="/index.html" class="nav-logo">Jamie Reid</a>
+  <ul class="nav-links">
+    <li><a href="/index.html#about">About</a></li>
+    <li><a href="/index.html">Work</a></li>
+    <li><a href="/journal/index.html" class="active">Thinking Forward Journal</a></li>
+    <li><a href="/index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="post-hero">
+  <a href="/journal/index.html" class="post-back">Back to Journal</a>
+  <p class="post-category">AI &amp; Partnerships</p>
+  <h1 class="post-title">The Real AI Unlock for Partnerships Isn't a Better Prompt — It's Context</h1>
+  <p class="post-excerpt">Most partnership teams have "adopted AI" — but they're stuck at text generation. The teams pulling ahead aren't writing better prompts. They're building something more foundational.</p>
+  <div class="post-meta">
+    <span>Jamie Reid</span>
+    <span>May 2026</span>
+    <span>6 min read</span>
+  </div>
+</div>
+
+<div class="post-body">
+  <article class="post-content">
+    <p>If you've been in any partnership leadership conversation in the last six months, you've heard some version of the same story. We're using AI. We have a team license. We've built some prompts. We're checking the box.</p>
+
+    <p>But when I listen carefully to the teams that are actually getting leverage from AI — the ones whose programs are scaling faster, whose seller activation is working, whose partners are getting genuinely better experiences — they're not winning on better prompts. They're winning on something more foundational.</p>
+
+    <p>They've invested in context.</p>
+
+    <h2>What "Context" Actually Means Here</h2>
+
+    <p>The version of AI most partnership teams are still operating in looks like this: open ChatGPT or Claude, paste in a partner brief, paste in a deal background, paste in a campaign goal, prompt the model, copy the output, paste it somewhere else. Repeat for every task.</p>
+
+    <p>That's not AI doing work. That's a human doing the work of feeding context to a model — over and over — and using the model as a fancy text generator.</p>
+
+    <p>The teams that have moved past this have built persistent context layers. Their AI doesn't need to be re-introduced to the partner program every time it gets asked to draft an email. It already knows the partner tiers, the certification requirements, the buyer personas, the competitive positioning, the recent QBR notes, the deal stage. It can pick up a task and act on it because the context is already there.</p>
+
+    <p>This is the difference between AI as a productivity layer and AI as operational infrastructure.</p>
+
+    <h2>Why This Matters More for Partnerships Than for Other Functions</h2>
+
+    <p>Partnerships has always been a function that operates on shoestring budgets and depends on translating complex context across boundaries.</p>
+
+    <p>Think about what a partner manager actually does in a day. They sit between three sets of context: the internal product and program reality, the partner's business reality, and the customer opportunity. Most of the friction in the role is in moving context between those three worlds — and most of the wasted hours are spent reconstructing context that already exists somewhere else.</p>
+
+    <p>Sales tools get built for sales. Marketing tools get built for marketing. Partnership teams have historically been the last to get budget for purpose-built tooling, so we've spent years stitching together spreadsheets, Google Drive folders, and PRM workarounds to keep our context organized. We are, by necessity, already context engineers.</p>
+
+    <p>That's exactly why the teams that win the AI shift will be the ones who recognize what they're actually building. The disorganized partner program documentation that lives across five tools isn't only a content problem. It's an AI readiness problem.</p>
+
+    <h2>What Context Infrastructure Looks Like in Practice</h2>
+
+    <p>The partnership teams I see getting this right are doing a few specific things.</p>
+
+    <p><strong>They're consolidating partner data into a single view, not a single tool.</strong> The goal isn't to migrate everything into one PRM. The goal is to make sure that when an AI agent or workflow asks "what is the current state of this partner relationship," the answer is retrievable. That requires connecting CRM, PRM, content systems, conversation intelligence, and enablement assets to a shared layer.</p>
+
+    <p><strong>They're moving past Excel-based partner tracking.</strong> If your sellers are still being handed a spreadsheet of partner attributes and asked to figure out the "what next," your program is not AI-ready. The next step from any partner data point should be a prescriptive workflow, not an open question.</p>
+
+    <p><strong>They're feeding human-validated answers back into the system.</strong> When a partner-facing help desk escalates a question to a human and that human writes a great answer, that answer should update the context layer for the next time. Otherwise every team is rebuilding the same wheel quarterly.</p>
+
+    <p><strong>They're using AI to surface signal across systems, not just generate content.</strong> The most interesting use cases I'm seeing aren't "write me a partner email." They're closer to "tell me which of my partners were mentioned in a sales call this quarter and what was said about them." That kind of work is only possible if context is connected.</p>
+
+    <h2>What This Means for Partner Program Builders Right Now</h2>
+
+    <p>If you're standing up or scaling a partner program today, AI shouldn't be a separate workstream you'll get to later. It should be a constraint on how you design the program architecture now.</p>
+
+    <p>That means asking different questions when you're choosing tools, structuring content, and writing enablement. How will a partner agent retrieve this in six months? Is this knowledge living somewhere it can be queried, or only somewhere it can be opened? When a seller asks a partner question, what's the path from their tool to an answer?</p>
+
+    <p>The shift isn't from "no AI" to "some AI." It's from AI as a personal productivity tool to AI as a system that knows your program well enough to act on it.</p>
+
+    <p>The programs that win the next five years won't have the most prompts in their saved library. They'll have the most coherent context infrastructure — and the discipline to keep building it as the program evolves.</p>
+
+    <hr>
+
+    <p><em>Have thoughts on this? Connect with me on <a href="https://www.linkedin.com/in/jamie-reid-862864b/" target="_blank" rel="noopener">LinkedIn</a>.</em></p>
+  </article>
+
+
+  <!-- Subscribe -->
+  <div style="background:var(--warm-dark);border:1px solid var(--line);padding:40px;margin-top:60px;">
+    <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:12px;">Stay in the loop</p>
+    <h3 style="font-family:'DM Serif Display',serif;font-size:24px;color:var(--white);margin-bottom:12px;">New posts, straight to your inbox.</h3>
+    <p style="font-size:14px;color:var(--sage);line-height:1.7;margin-bottom:28px;">No cadence commitments. Just thinking worth sharing when it's ready.</p>
+    <form name="subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html"
+      style="display:flex;gap:12px;flex-wrap:wrap;">
+      <input type="hidden" name="form-name" value="subscribe">
+      <p style="display:none;"><input name="bot-field"></p>
+      <input type="email" name="email" placeholder="your@email.com" required
+        style="flex:1;min-width:200px;background:var(--black);border:1px solid var(--line);color:var(--white);padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;">
+      <button type="submit"
+        style="background:var(--forest-deep);border:1px solid var(--forest-mid);color:var(--white);padding:12px 28px;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;white-space:nowrap;">
+        Subscribe
+      </button>
+    </form>
+  </div>
+
+  <!-- Comments -->
+  <div style="margin-top:60px;padding-top:48px;border-top:1px solid var(--line);">
+    <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:32px;">Discussion</p>
+    <script src="https://giscus.app/client.js"
+        data-repo="jamiereidcs/jamiereidchannelstrategy"
+        data-repo-id="R_kgDORXLolQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDORXLolc4C3IES"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark_dimmed"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+    </script>
+  </div>
+
+  <aside class="post-sidebar">
+    <div class="sidebar-block">
+      <p class="sidebar-label">Written by</p>
+      <h3 class="sidebar-name">Jamie Reid</h3>
+      <p class="sidebar-bio">Partner ecosystem strategy leader. Building the programs of today, designing the channel of tomorrow.</p>
+      <a href="/index.html#contact" class="sidebar-link">Get in touch</a>
+    </div>
+    <div class="sidebar-block">
+      <p class="sidebar-label">Tags</p>
+      <span class="sidebar-tag">AI</span>
+      <span class="sidebar-tag">Partner Programs</span>
+      <span class="sidebar-tag">Context</span>
+      <span class="sidebar-tag">Operations</span>
+      <span class="sidebar-tag">Strategy</span>
+    </div>
+    <div class="sidebar-block">
+      <p class="sidebar-label">More from the Journal</p>
+      <p style="font-size:12px;color:var(--sage);line-height:1.7;">More entries coming soon. Subscribe on LinkedIn to be notified when new posts go live.</p>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-logo">Jamie Reid</div>
+  <p class="footer-copy">© 2026 Jamie Reid. Partner Ecosystem Strategy.</p>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/jamie-reid-862864b/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="/journal/index.html">Journal</a>
+    <a href="/index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+  function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+  animRing();
+</script>
+</body>
+</html>
