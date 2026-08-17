@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chosen or Just Liked: Notes from the Partner Experience Battle | Thinking Forward Journal</title>
+<meta name="description" content="Partner satisfaction tells you how partners feel about you. Partner preference tells you which vendor they choose when they have to prioritize. Only one of those actually predicts your revenue.">
+<link rel="canonical" href="https://jamiereidchannelstrategy.com/journal/chosen-or-just-liked.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chosen or Just Liked: Notes from the Partner Experience Battle">
+<meta property="og:description" content="Partner satisfaction tells you how partners feel about you. Partner preference tells you which vendor they choose when they have to prioritize. Only one of those actually predicts your revenue.">
+<meta property="og:url" content="https://jamiereidchannelstrategy.com/journal/chosen-or-just-liked.html">
+<meta property="og:site_name" content="Jamie Reid | Channel Strategy">
+<meta property="og:image" content="https://jamiereidchannelstrategy.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chosen or Just Liked: Notes from the Partner Experience Battle">
+<meta name="twitter:description" content="Partner satisfaction tells you how partners feel about you. Partner preference tells you which vendor they choose when they have to prioritize. Only one of those actually predicts your revenue.">
+<meta name="twitter:image" content="https://jamiereidchannelstrategy.com/og-image.jpg">
+
+<!-- Additional SEO -->
+<meta name="author" content="Jamie Reid">
+<meta name="robots" content="index, follow">
+
+<!-- Article Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Chosen or Just Liked: Notes from the Partner Experience Battle",
+  "description": "Partner satisfaction tells you how partners feel about you. Partner preference tells you which vendor they choose when they have to prioritize. Only one of those actually predicts your revenue.",
+  "url": "https://jamiereidchannelstrategy.com/journal/chosen-or-just-liked.html",
+  "author": {
+    "@type": "Person",
+    "name": "Jamie Reid",
+    "url": "https://jamiereidchannelstrategy.com"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Jamie Reid"
+  }
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #141414;
+    --warm-dark: #1a1a1a;
+    --forest-deep: #1b3a2e;
+    --forest-mid: #46624c;
+    --sage: #687764;
+    --grey-green: #a1aca6;
+    --white: #bebfb9;
+    --line: rgba(70,98,76,0.35);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; cursor: none; }
+
+  .cursor { position: fixed; width: 10px; height: 10px; background: var(--forest-mid); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); }
+  .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--sage); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all 0.15s ease; opacity: 0.6; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 28px 60px; }
+  nav::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(20,20,20,0.97), transparent); pointer-events: none; }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 4px; color: var(--white); position: relative; z-index: 1; text-decoration: none; }
+  .nav-links { display: flex; gap: 40px; list-style: none; position: relative; z-index: 1; }
+  .nav-links a { color: var(--sage); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--white); }
+
+  /* Post hero */
+  .post-hero {
+    padding: 160px 60px 80px;
+    max-width: 860px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .post-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sage);
+    text-decoration: none;
+    margin-bottom: 48px;
+    transition: color 0.3s;
+  }
+  .post-back:hover { color: var(--white); }
+  .post-back::before { content: '←'; }
+
+  .post-category {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    margin-bottom: 20px;
+  }
+
+  .post-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+
+  .post-excerpt {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--grey-green);
+    margin-bottom: 36px;
+    max-width: 680px;
+  }
+
+  .post-meta {
+    display: flex;
+    gap: 32px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sage);
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* Post body */
+  .post-body {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 80px;
+    padding: 80px 60px 120px;
+    align-items: start;
+  }
+
+  .post-content {
+    max-width: 680px;
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--grey-green);
+  }
+
+  .post-content p { margin-bottom: 28px; }
+
+  .post-content h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
+    color: var(--white);
+    margin: 52px 0 20px;
+    line-height: 1.2;
+  }
+
+  .post-content h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    margin: 36px 0 14px;
+  }
+
+  .post-content strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .post-content em {
+    font-style: italic;
+    color: var(--grey-green);
+  }
+
+  .post-content hr {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 48px 0;
+  }
+
+  .post-content a {
+    color: var(--forest-mid);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.3s;
+  }
+  .post-content a:hover { color: var(--grey-green); }
+
+  .post-content ul, .post-content ol {
+    padding-left: 24px;
+    margin-bottom: 28px;
+  }
+  .post-content li { margin-bottom: 8px; }
+
+  /* Sidebar */
+  .post-sidebar {
+    position: sticky;
+    top: 100px;
+  }
+
+  .sidebar-block {
+    background: var(--warm-dark);
+    padding: 32px;
+    border: 1px solid var(--line);
+    margin-bottom: 24px;
+  }
+
+  .sidebar-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    margin-bottom: 16px;
+  }
+
+  .sidebar-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .sidebar-bio {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--sage);
+    margin-bottom: 20px;
+  }
+
+  .sidebar-link {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    text-decoration: none;
+    border: 1px solid var(--forest-mid);
+    padding: 8px 16px;
+    transition: all 0.3s;
+    width: 100%;
+    text-align: center;
+  }
+  .sidebar-link:hover { background: var(--forest-deep); color: var(--white); }
+
+  .sidebar-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    border: 1px solid rgba(70,98,76,0.35);
+    padding: 5px 10px;
+    margin: 0 4px 8px 0;
+  }
+
+  footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--grey-green); }
+  .footer-copy { font-size: 11px; color: var(--sage); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--sage); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--white); }
+
+  @media (max-width: 768px) {
+    #cursor, #cursorRing { display: none; }
+    * { cursor: auto !important; }
+    nav { padding: 20px 24px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 10px; letter-spacing: 1px; }
+    .post-hero { padding: 100px 24px 48px; }
+    .post-body { grid-template-columns: 1fr; padding: 48px 24px 80px; gap: 48px; }
+    .post-sidebar { position: static; }
+    footer { flex-direction: column; gap: 16px; padding: 32px 24px; text-align: center; }
+    .footer-links { gap: 20px; }
+  }
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LL3TBPZYFN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LL3TBPZYFN');
+</script>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="/index.html" class="nav-logo">Jamie Reid</a>
+  <ul class="nav-links">
+    <li><a href="/index.html#about">About</a></li>
+    <li><a href="/index.html">Work</a></li>
+    <li><a href="/journal/index.html" class="active">Thinking Forward Journal</a></li>
+    <li><a href="/index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="post-hero">
+  <a href="/journal/index.html" class="post-back">Back to Journal</a>
+  <p class="post-category">Partner Experience &amp; Strategy</p>
+  <h1 class="post-title">Chosen or Just Liked: Notes from the Partner Experience Battle</h1>
+  <p class="post-excerpt">Partner satisfaction tells you how partners feel about you. Partner preference tells you which vendor they choose when they have to prioritize. Only one of those actually predicts your revenue.</p>
+  <div class="post-meta">
+    <span>Jamie Reid</span>
+    <span>July 2026</span>
+    <span>7 min read</span>
+  </div>
+</div>
+
+<div class="post-body">
+  <article class="post-content">
+    <p>Being liked and being chosen are two very different things. And after sitting in on a Channel Focus panel this week called Winning the Partner Experience Battle, I don't think most partner programs know the difference.</p>
+
+    <p>Partner experience is what I own in my current role. It is the thing I sit down thinking about every morning. So when the panel opened with the reframe that stopped me mid-note, it hit exactly where I live.</p>
+
+    <p>Most vendors think they are winning if partners speak well of them in a satisfaction survey. But partners are not paid to like you. They are paid to make their own numbers, in front of their own customers, on their own margins. The way they show you what they actually think of your program is where they put their time, their people, and their pipeline.</p>
+
+    <p>Satisfaction is what they say. Preference is what they do.</p>
+
+    <p>That distinction is the whole game.</p>
+
+    <h2>The Question I've Been Asking Myself Since</h2>
+
+    <p>If a partner has three vendors in the same category and they can only put real weight behind one this quarter, which do they choose? And more importantly, why?</p>
+
+    <p>If the honest answer is "us, because we are easier to work with than the others," you are winning. If the honest answer is "us, because our product is technically better," you are winning for now. If the answer involves any hesitation, that is your program telling you where the work is.</p>
+
+    <p>So here is a question worth sitting with. When was the last time you asked a partner why they chose to prioritize you this quarter over another vendor in your category? Not through a survey. In a conversation. The answer is often not what the satisfaction score suggests.</p>
+
+    <h2>Design From the Outside In</h2>
+
+    <p>One of the sharpest observations across the panel was that most partner programs are still designed inside out. What is good for our compliance team. What is good for our legal team. What is good for our finance controls. What the process looked like the last time we ran it.</p>
+
+    <p>Every one of those things is a legitimate concern. And every one of them, unchecked, becomes a small drag on the partner experience.</p>
+
+    <p>The question I now think every partner program builder should be asking on repeat is a simple one. Why do we need this? Not "should we change it," which is a question that invites defensive answers. Just why. Why seven layers of approval in this region. Why five days between claim submission and the first response. Why this piece of documentation that we ask for every time and never actually reference.</p>
+
+    <p>Sometimes the answer is a real reason. Often the answer is that no one has questioned it in years.</p>
+
+    <p>Pick one process in your partner program right now. Ask three people why it works the way it does. If the answers come back different from each other, or if any of them start with "I think it's because," that process is a candidate for redesign.</p>
+
+    <h2>Where the Friction Actually Lives</h2>
+
+    <p>One of the more practical points from the panel was that friction is often not about whether you have a step. It is about where that step happens in the process.</p>
+
+    <p>Validation at the moment of submission means the partner gets immediate feedback and can fix a mistake while they are still in the workflow. Validation days later means the partner has to context switch, dig up what they submitted, remember what they were trying to do, and get back into a stalled thread. Same step. Completely different experience.</p>
+
+    <p>That principle applies to nearly every partner-facing workflow. Where does the delay live? Where does the handoff happen? Where does the partner have to wait?</p>
+
+    <p>If you traced the partner journey through your program end to end, could you point to every moment the partner has to stop and wait for you? Have you counted them? Have you timed them? Most programs cannot answer that question in specifics. That itself is the diagnostic.</p>
+
+    <h2>AI Is for Your Friction, Not for Your Ego</h2>
+
+    <p>The AI conversation on the panel was refreshingly grounded. Every panelist made some version of the same point. Applying AI to apply AI is a distraction. Applying AI to the specific places your program creates friction is where the leverage lives.</p>
+
+    <p>Claim processing. Invoice image reading. First-line support with a clean handoff to a human when the question turns nuanced. Form wizards that walk a partner through what used to be a fifty-field submission. Personalized program communications inside your brand guardrails.</p>
+
+    <p>None of these are transformational on paper. All of them are transformational to the partner who no longer has to spend a Friday afternoon on your paperwork.</p>
+
+    <p>What are the three highest-friction moments in your partner journey today? And would AI actually shorten those, or would it just make them look more sophisticated?</p>
+
+    <h2>Segmentation Beats AI</h2>
+
+    <p>This one was my favorite point of the day because it names something I have been trying to articulate in my own work.</p>
+
+    <p>Most partner programs are not underpersonalized because they don't have AI. They are underpersonalized because they never segmented properly. A tier based on how much a partner sold is not segmentation. It is scoring. Real segmentation knows what the partner sold, who they sold it to, what they are certified in, what their business model actually is, and whether their trajectory is up or down.</p>
+
+    <p>Do that work first. Then think about AI.</p>
+
+    <p>If you had to describe your best partner and your worst partner using only what your program actually tracks about them today, would the two descriptions look different in a way that matters? If not, that is your segmentation gap.</p>
+
+    <h2>The Human Touch Is Not Optional</h2>
+
+    <p>The counterintuitive point that came up across multiple panelists was that as technology takes over more of the routine interactions, the human moments become disproportionately valuable.</p>
+
+    <p>Automation handles the small things well. But when something goes wrong, when a payment is late, when a claim is disputed, when a partner is stuck, that is when a real human on your team either wins loyalty or loses it. Automation cannot buy loyalty in a bad moment. A named person who cares about the outcome can.</p>
+
+    <p>When something goes wrong in your program, who owns the recovery? Do they have the authority to actually fix it, or are they just the first line of contact who then has to route it somewhere else?</p>
+
+    <h2>Speed Is Now Table Stakes</h2>
+
+    <p>One of the panelists made a point I keep coming back to. Partners are not waiting on you in a vacuum. They are waiting on you in front of their end customer. When you take a week to answer a question they need to answer in a meeting, you have not just delayed them. You have made them look bad.</p>
+
+    <p>Two shifts in how we should be measuring speed.</p>
+
+    <p>First, stop measuring from ticket opened to ticket answered. Measure from the moment the partner needed to know something to the moment they could actually act on it. Those are two very different numbers, and the second one is the one that shapes how the partner feels about your program.</p>
+
+    <p>Second, stop hiding behind averages. A program that resolves fifty issues in three days and one issue in eleven weeks does not have a three-day average experience. It has an eleven-week reputation. The worst week is the reputation. Everything else is noise.</p>
+
+    <p>What is your worst response time this quarter? Not your average. Your worst. That is how a partner remembers you.</p>
+
+    <h2>What I'm Taking Back</h2>
+
+    <p>Two things I am putting into my own week.</p>
+
+    <p>The first is the chosen versus liked test. I am going to start asking partners a version of that question directly, not in a survey. Which vendor in our category are you prioritizing this quarter, and why?</p>
+
+    <p>The second is a friction audit. I am going to pick one workflow in our program and walk it end to end from the partner side. Not the internal side. Not the version in our runbook. The version a partner actually experiences. And I am going to time it, count the handoffs, and note every place they have to wait on us.</p>
+
+    <p>Because the panel was right. This is not the technology battle. Every vendor has technology within a whisker of the next one. This is the ease-of-doing-business battle. And the vendors who take that seriously are the ones being chosen.</p>
+
+    <p>So what are you doing this quarter to make sure it is you?</p>
+
+    <hr>
+
+    <p><em>Have thoughts on this? Connect with me on <a href="https://www.linkedin.com/in/jamie-reid-862864b/" target="_blank" rel="noopener">LinkedIn</a>.</em></p>
+  </article>
+
+
+  <!-- Subscribe -->
+  <div style="background:var(--warm-dark);border:1px solid var(--line);padding:40px;margin-top:60px;">
+    <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:12px;">Stay in the loop</p>
+    <h3 style="font-family:'DM Serif Display',serif;font-size:24px;color:var(--white);margin-bottom:12px;">New posts, straight to your inbox.</h3>
+    <p style="font-size:14px;color:var(--sage);line-height:1.7;margin-bottom:28px;">No cadence commitments. Just thinking worth sharing when it's ready.</p>
+    <form name="subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html"
+      style="display:flex;gap:12px;flex-wrap:wrap;">
+      <input type="hidden" name="form-name" value="subscribe">
+      <p style="display:none;"><input name="bot-field"></p>
+      <input type="email" name="email" placeholder="your@email.com" required
+        style="flex:1;min-width:200px;background:var(--black);border:1px solid var(--line);color:var(--white);padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;">
+      <button type="submit"
+        style="background:var(--forest-deep);border:1px solid var(--forest-mid);color:var(--white);padding:12px 28px;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;white-space:nowrap;">
+        Subscribe
+      </button>
+    </form>
+  </div>
+
+  <!-- Comments -->
+  <div style="margin-top:60px;padding-top:48px;border-top:1px solid var(--line);">
+    <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:32px;">Discussion</p>
+    <script src="https://giscus.app/client.js"
+        data-repo="jamiereidcs/jamiereidchannelstrategy"
+        data-repo-id="R_kgDORXLolQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDORXLolc4C3IES"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark_dimmed"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+    </script>
+  </div>
+
+  <aside class="post-sidebar">
+    <div class="sidebar-block">
+      <p class="sidebar-label">Written by</p>
+      <h3 class="sidebar-name">Jamie Reid</h3>
+      <p class="sidebar-bio">Partner ecosystem strategy leader. Building the programs of today, designing the channel of tomorrow.</p>
+      <a href="/index.html#contact" class="sidebar-link">Get in touch</a>
+    </div>
+    <div class="sidebar-block">
+      <p class="sidebar-label">Tags</p>
+      <span class="sidebar-tag">Partner Experience</span>
+      <span class="sidebar-tag">Strategy</span>
+      <span class="sidebar-tag">Programs</span>
+      <span class="sidebar-tag">Segmentation</span>
+      <span class="sidebar-tag">AI</span>
+    </div>
+    <div class="sidebar-block">
+      <p class="sidebar-label">More from the Journal</p>
+      <p style="font-size:12px;color:var(--sage);line-height:1.7;">More entries coming soon. Subscribe on LinkedIn to be notified when new posts go live.</p>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-logo">Jamie Reid</div>
+  <p class="footer-copy">© 2026 Jamie Reid. Partner Ecosystem Strategy.</p>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/jamie-reid-862864b/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="/journal/index.html">Journal</a>
+    <a href="/index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+  function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+  animRing();
+</script>
+</body>
+</html>
